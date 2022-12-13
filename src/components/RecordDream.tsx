@@ -13,7 +13,7 @@ function RecordDream(props: RecordModalProps): JSX.Element {
 
   function confirmHandler() {
     console.log(dreamtext);
-    postDream({ dreamtext });
+    postDream(dreamtext);
     props.onConfirm();
   }
 

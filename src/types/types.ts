@@ -12,7 +12,7 @@ export type DreamInput = {
 };
 
 export type Dream = {
-  id?: string;
+  id: string;
   dreamtext: string;
-  date?: string;
+  date: string;
 };
