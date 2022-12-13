@@ -1,5 +1,6 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
 import { RecordModalProps } from "../types/types";
+import { postDream } from "../helper";
 
 function RecordDream(props: RecordModalProps): JSX.Element {
   const [dreamtext, setDreamtext] = useState("");
@@ -12,6 +13,7 @@ function RecordDream(props: RecordModalProps): JSX.Element {
 
   function confirmHandler() {
     console.log(dreamtext);
+    postDream({ dreamtext });
     props.onConfirm();
   }
 

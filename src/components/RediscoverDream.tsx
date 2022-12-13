@@ -1,9 +1,23 @@
-import { useNavigate } from "react-router-dom";
 import Dream from "./Dream";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { RediscoverModalProps } from "../types/types";
+import { getRandomDream } from "../helper";
+import { Dream as DreamType } from "../types/types";
 
 function RediscoverDream(props: RediscoverModalProps): JSX.Element {
+  const [dream, setDream] = useState<DreamType>({
+    id: "0",
+    dreamtext: "undefined",
+    date: "undefined",
+  });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getRandomDream().then((dream) => {
+      setDream(dream);
+    });
+  }, []);
 
   function returnHandler() {
     props.onCancel();
@@ -22,10 +36,7 @@ function RediscoverDream(props: RediscoverModalProps): JSX.Element {
               An illusion from the past..
             </h1>
 
-            <Dream
-              text="doing pup play in the middle of milan grove"
-              date="christmas day"
-            />
+            <Dream key={dream.id} text={dream.dreamtext} date={dream.date} />
 
             <div>
               <button
