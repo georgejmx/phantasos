@@ -1,34 +1,24 @@
 {
   "dreams": [
     {
-      "id": 1,
+      "id": 0,
       "dreamtext": "sample dream",
       "date": "1st jan 1970"
     },
     {
-      "id": 2,
+      "id": 1,
       "dreamtext": "another sample dream",
       "date": "1st jan 1971"
     },
     {
-      "id": 3,
+      "id": 2,
       "dreamtext": "3 sample dream",
       "date": "1st jan 1972"
     },
     {
-      "id": 4,
+      "id": 3,
       "dreamtext": "4 sample dream",
       "date": "1st jan 1973"
-    },
-    {
-      "dreamtext": "another one, DJ KHALED",
-      "id": "2175",
-      "date": "1st jan 1974"
-    },
-    {
-      "dreamtext": "booooom",
-      "id": "655",
-      "date": "1st jan 1974"
     }
   ]
 }

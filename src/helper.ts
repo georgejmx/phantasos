@@ -12,9 +12,8 @@ export async function getDreams(): Promise<Dream[]> {
 export async function getRandomDream(): Promise<Dream> {
   // TODO: Will actually do a db transaction to first find count then select
   // random
-  const randInt: number = 4 + Math.floor(Math.random() * 4);
-
-  const response = await fetch(API_URL + "/dreams/" + String(randInt));
+  const randInt: number = Math.floor(Math.random() * 4);
+  const response = await fetch(API_URL + "/dreams/" + randInt);
   return await response.json();
 }
 

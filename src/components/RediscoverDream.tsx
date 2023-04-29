@@ -6,11 +6,7 @@ import { getRandomDream } from "../helper";
 import { Dream as DreamType } from "../types/types";
 
 function RediscoverDream(props: RediscoverModalProps): JSX.Element {
-  const [dream, setDream] = useState<DreamType>({
-    id: "0",
-    dreamtext: "undefined",
-    date: "undefined",
-  });
+  const [dream, setDream] = useState<DreamType | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,7 +32,11 @@ function RediscoverDream(props: RediscoverModalProps): JSX.Element {
               An illusion from the past..
             </h1>
 
-            <Dream key={dream.id} text={dream.dreamtext} date={dream.date} />
+            {dream ? (
+              <Dream key={dream.id} text={dream.dreamtext} date={dream.date} />
+            ) : (
+              <p className="text-cyan-500 italic p-2 my-4">Loading...</p>
+            )}
 
             <div>
               <button
