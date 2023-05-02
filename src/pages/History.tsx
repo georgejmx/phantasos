@@ -36,7 +36,8 @@ function HistoryPage(): JSX.Element {
               key={dream.id}
               text={dream.dreamtext}
               date={dream.date}
-              archetypeId={dream.archetypeId}
+              goal={dream.goal}
+              aspect={dream.aspect}
             />
           ))}
         </div>

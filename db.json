@@ -2,27 +2,27 @@
   "dreams": [
     {
       "id": 0,
-      "dreamtext": "sample dream",
+      "dreamtext": "walking up kilimanjaro with nana",
       "date": "1st jan 1970",
-      "archetypeId": 2
+      "archetypeId": 2,
+      "goal": "understanding",
+      "aspect": "self"
     },
     {
       "id": 1,
-      "dreamtext": "another sample dream",
+      "dreamtext": "snowed in school",
       "date": "1st jan 1971",
-      "archetypeId": 1
+      "archetypeId": 1,
+      "goal": "safety",
+      "aspect": "ego"
     },
     {
       "dreamtext": "eternal hide and seek i wanted to last forever",
-      "archetypeId": 1,
-      "id": 2,
-      "date": "02/05/2023"
-    },
-    {
-      "dreamtext": "walking up mount kilimangaro with nana",
       "archetypeId": 3,
-      "id": 3,
-      "date": "02/05/2023"
+      "id": 2,
+      "date": "02/05/2023",
+      "goal": "freedom",
+      "aspect": "soul"
     }
   ],
   "archetypes": [

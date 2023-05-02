@@ -18,7 +18,6 @@ function SelectArchetypeGrid(props: SelectArchetypeGridProps): JSX.Element {
         {archetypes.map((archetype) => (
           <button
             key={archetype.id}
-            value={archetype.id}
             onClick={() => setSelectedArchetype(archetype.id)}
             className="py-2 px-6 mr-2 mb-2 bg-slate-900 font-montserrat rounded-full text-pink-400 focus:outline active:bg-purple-500 active:border-fuchsia-400"
           >

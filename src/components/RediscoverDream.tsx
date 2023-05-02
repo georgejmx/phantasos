@@ -43,7 +43,8 @@ function RediscoverDream(props: RediscoverModalProps): JSX.Element {
                 key={dream.id}
                 text={dream.dreamtext}
                 date={dream.date}
-                archetypeId={dream.archetypeId}
+                goal={dream.goal}
+                aspect={dream.aspect}
               />
             ) : (
               <p className="text-cyan-500 italic p-2 my-4">{alertMessage}</p>
