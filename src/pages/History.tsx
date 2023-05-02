@@ -6,12 +6,18 @@ import { Dream as DreamType } from "../types/types";
 
 function HistoryPage(): JSX.Element {
   const [dreams, setDreams] = useState<DreamType[] | null>(null);
+  const [alertMessage, setAlertMessage] = useState<string>("Loading..");
   const navigate = useNavigate();
 
   useEffect(() => {
-    getDreams().then((dreams) => {
-      setDreams(dreams);
-    });
+    getDreams()
+      .then((dreams) => {
+        setDreams(dreams);
+      })
+      .catch((error) => {
+        console.error(error);
+        setAlertMessage(error.message || "Error.");
+      });
   }, []);
 
   function homeHandler() {
@@ -26,11 +32,16 @@ function HistoryPage(): JSX.Element {
       {dreams ? (
         <div className="overflow-auto">
           {dreams.map((dream) => (
-            <Dream key={dream.id} text={dream.dreamtext} date={dream.date} />
+            <Dream
+              key={dream.id}
+              text={dream.dreamtext}
+              date={dream.date}
+              archetypeId={dream.archetypeId}
+            />
           ))}
         </div>
       ) : (
-        <p className="text-cyan-500 italic p-2 my-4">Loading...</p>
+        <p className="text-cyan-500 italic p-2 my-4">{alertMessage}</p>
       )}
       <button
         onClick={homeHandler}

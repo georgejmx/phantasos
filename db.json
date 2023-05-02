@@ -3,22 +3,112 @@
     {
       "id": 0,
       "dreamtext": "sample dream",
-      "date": "1st jan 1970"
+      "date": "1st jan 1970",
+      "archetypeId": 2
     },
     {
       "id": 1,
       "dreamtext": "another sample dream",
-      "date": "1st jan 1971"
+      "date": "1st jan 1971",
+      "archetypeId": 1
+    },
+    {
+      "dreamtext": "eternal hide and seek i wanted to last forever",
+      "archetypeId": 1,
+      "id": 2,
+      "date": "02/05/2023"
+    },
+    {
+      "dreamtext": "walking up mount kilimangaro with nana",
+      "archetypeId": 3,
+      "id": 3,
+      "date": "02/05/2023"
+    }
+  ],
+  "archetypes": [
+    {
+      "id": 1,
+      "name": "innocent",
+      "goal": "safety",
+      "aspect": "ego",
+      "description": ""
     },
     {
       "id": 2,
-      "dreamtext": "3 sample dream",
-      "date": "1st jan 1972"
+      "name": "sage",
+      "goal": "understanding",
+      "aspect": "self",
+      "description": ""
     },
     {
       "id": 3,
-      "dreamtext": "4 sample dream",
-      "date": "1st jan 1973"
+      "name": "explorer",
+      "goal": "freedom",
+      "aspect": "soul",
+      "description": ""
+    },
+    {
+      "id": 4,
+      "name": "outlaw",
+      "goal": "liberation",
+      "aspect": "soul",
+      "description": ""
+    },
+    {
+      "id": 5,
+      "name": "magician",
+      "goal": "power",
+      "aspect": "self",
+      "description": ""
+    },
+    {
+      "id": 6,
+      "name": "hero",
+      "goal": "mastery",
+      "aspect": "ego",
+      "description": ""
+    },
+    {
+      "id": 7,
+      "name": "lover",
+      "goal": "intimacy",
+      "aspect": "soul",
+      "description": ""
+    },
+    {
+      "id": 8,
+      "name": "jester",
+      "goal": "enjoyment",
+      "aspect": "self",
+      "description": ""
+    },
+    {
+      "id": 9,
+      "name": "everyman",
+      "goal": "belonging",
+      "aspect": "ego",
+      "description": ""
+    },
+    {
+      "id": 10,
+      "name": "caregiver",
+      "goal": "service",
+      "aspect": "ego",
+      "description": ""
+    },
+    {
+      "id": 11,
+      "name": "ruler",
+      "goal": "control",
+      "aspect": "self",
+      "description": ""
+    },
+    {
+      "id": 12,
+      "name": "creator",
+      "goal": "innovation",
+      "aspect": "soul",
+      "description": ""
     }
   ]
 }

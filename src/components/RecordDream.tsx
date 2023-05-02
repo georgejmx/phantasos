@@ -1,18 +1,53 @@
-import { ChangeEvent, useState } from "react";
-import { RecordModalProps } from "../types/types";
-import { postDream } from "../helper";
+import { ChangeEvent, useEffect, useState } from "react";
+import { Archetype, RecordModalProps } from "../types/types";
+import { getArchetypes, postDream } from "../helper";
+import SelectArchetypeGrid from "./SelectArchetypeGrid";
 
 function RecordDream(props: RecordModalProps): JSX.Element {
-  const [dreamtext, setDreamtext] = useState("");
+  const [archetypes, setArchetypes] = useState<Archetype[] | null>(null);
+  const [selectedArchetypeId, setSelectedArchetypeId] = useState<number>(0);
+  const [dreamtext, setDreamtext] = useState<string>("");
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const dreamLimit: number = 1000;
+
+  useEffect(() => {
+    getArchetypes()
+      .then((archetypes) => {
+        setArchetypes(archetypes);
+      })
+      .catch((error) => {
+        console.error(error);
+        setErrorMsg(error.message || "Error.");
+      });
+  }, []);
+
+  function onSelectArchetype(id: number) {
+    setSelectedArchetypeId(id);
+  }
 
   function cancelHandler() {
     props.onCancel();
   }
 
+  // Handle user attempt to post dream
   function confirmHandler() {
-    postDream(dreamtext);
-    props.onConfirm();
+    if (selectedArchetypeId === 0) {
+      setErrorMsg("Please select an archetype to mark your dream...");
+      return;
+    }
+
+    postDream(dreamtext, selectedArchetypeId)
+      .then((ok) => {
+        if (ok) {
+          props.onConfirm();
+        } else {
+          setErrorMsg("Failed to post dream");
+        }
+      })
+      .catch((error: unknown) => {
+        console.error(error);
+        setErrorMsg("Error when posting dream");
+      });
   }
 
   function handleDreamtext(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -20,7 +55,7 @@ function RecordDream(props: RecordModalProps): JSX.Element {
   }
 
   return (
-    <div className="z-50 fixed inset-2 top-12 overflow-y-auto">
+    <div role="dialog" className="z-50 fixed inset-2 top-12 overflow-y-auto">
       <div className="flex items-end justify-center text-center md:items-center sm:block">
         <div className="inline-block max-w-prose overflow-hidden text-left transition-all transform bg-black font-serif 2xl:max-w-2xl xl:w-3/5">
           <div className="relative py-3 md:px-10 border border-b-4 border-purple-500 px-2">
@@ -40,6 +75,17 @@ function RecordDream(props: RecordModalProps): JSX.Element {
                 maxLength={dreamLimit}
               ></textarea>
             </div>
+
+            {archetypes && (
+              <SelectArchetypeGrid
+                archetypes={archetypes}
+                onSelect={onSelectArchetype}
+              />
+            )}
+
+            {errorMsg && (
+              <p className="text-cyan-500 italic p-2 my-4">{errorMsg}</p>
+            )}
 
             <div>
               <button

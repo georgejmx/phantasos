@@ -1,18 +1,24 @@
 import Dream from "./Dream";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { RediscoverModalProps } from "../types/types";
 import { getRandomDream } from "../helper";
+import { RediscoverModalProps } from "../types/types";
 import { Dream as DreamType } from "../types/types";
 
 function RediscoverDream(props: RediscoverModalProps): JSX.Element {
   const [dream, setDream] = useState<DreamType | null>(null);
+  const [alertMessage, setAlertMessage] = useState<string>("Loading..");
   const navigate = useNavigate();
 
   useEffect(() => {
-    getRandomDream().then((dream) => {
-      setDream(dream);
-    });
+    getRandomDream()
+      .then((dream) => {
+        setDream(dream);
+      })
+      .catch((error) => {
+        console.error(error);
+        setAlertMessage(error.message || "Error.");
+      });
   }, []);
 
   function returnHandler() {
@@ -24,7 +30,7 @@ function RediscoverDream(props: RediscoverModalProps): JSX.Element {
   }
 
   return (
-    <div className="z-50 fixed inset-2 top-12 overflow-y-auto">
+    <div role="dialog" className="z-50 fixed inset-2 top-12 overflow-y-auto">
       <div className="flex items-end justify-center text-center md:items-center sm:block">
         <div className="inline-block max-w-prose overflow-hidden text-left transition-all transform bg-gradient-to-br from-zinc-900 to-black font-serif 2xl:max-w-2xl xl:w-3/5">
           <div className="relative py-3 md:px-10 border border-b-4 border-purple-500 px-2">
@@ -33,9 +39,14 @@ function RediscoverDream(props: RediscoverModalProps): JSX.Element {
             </h1>
 
             {dream ? (
-              <Dream key={dream.id} text={dream.dreamtext} date={dream.date} />
+              <Dream
+                key={dream.id}
+                text={dream.dreamtext}
+                date={dream.date}
+                archetypeId={dream.archetypeId}
+              />
             ) : (
-              <p className="text-cyan-500 italic p-2 my-4">Loading...</p>
+              <p className="text-cyan-500 italic p-2 my-4">{alertMessage}</p>
             )}
 
             <div>
