@@ -42,6 +42,12 @@ export async function getDreams(): Promise<Dream[]> {
 }
 
 export async function getRandomDream(): Promise<Dream> {
+  /*
+db.users.aggregate([
+  { $match: { age: { $gt: 25 } } },
+  { $sample: 1 }
+])
+  */
   const dreams = await getDreams();
   const randInt: number = Math.floor(Math.random() * dreams.length);
   return dreams[randInt];

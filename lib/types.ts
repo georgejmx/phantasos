@@ -1,3 +1,13 @@
+import { ObjectId } from "mongodb";
+
+/* Props */
+
+export interface MenuProps {
+  email: string | null | undefined;
+  dream: Dream | null;
+  archetypes: Archetype[] | null;
+}
+
 export interface NavigationPaneProps {
   dream: Dream;
   archetypes: Archetype[];
@@ -24,6 +34,14 @@ export type DreamProps = {
   date: string;
   goal?: string;
   aspect?: string;
+};
+
+/* Entities */
+
+export type User = {
+  _id?: ObjectId;
+  email: string;
+  hash: string;
 };
 
 export type Dream = {
