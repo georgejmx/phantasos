@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 
-import { authConfig } from "@/app/api/auth/[...nextauth]/route";
+import { authConfig } from "@/app/api/auth/[...nextauth]/config";
 import clientPromise from "@/lib/setupMongo";
 import { CoreDream, RawDream } from "@/lib/types";
 

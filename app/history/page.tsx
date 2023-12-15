@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 
-import { authConfig } from "@/app/api/auth/[...nextauth]/route";
+import { authConfig } from "@/app/api/auth/[...nextauth]/config";
 import { getDreams } from "@/app/api/dream/fetchers";
 import { getArchetypes } from "@/app/api/archetype/fetchers";
 import { formatDream } from "@/lib/utils";
@@ -11,7 +11,7 @@ import ErrorBox from "@/components/ErrorBox";
 
 export default async function History(): Promise<JSX.Element> {
   const session = await getServerSession(authConfig);
-  let dreams: DreamType[] | null = null;
+  let dreams: DreamType[] = [];
   if (session) {
     const archetypes = await getArchetypes();
     const rawDreams = await getDreams(session.user?.email as string);

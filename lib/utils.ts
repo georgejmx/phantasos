@@ -5,12 +5,9 @@ function parseDate(date: Date): string {
 }
 
 export function formatDream(
-  rawDream: RawDream | null,
+  rawDream: RawDream,
   archetypes: Archetype[]
-): Dream | null {
-  if (!rawDream) {
-    return null;
-  }
+): Dream {
   const dreamArchetype = archetypes.find((a) => a.name == rawDream.archetype);
   if (!dreamArchetype) {
     throw Error("Invalid dream archetype entry");

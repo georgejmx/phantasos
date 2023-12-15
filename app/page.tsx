@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 
-import { authConfig } from "@/app/api/auth/[...nextauth]/route";
+import { authConfig } from "@/app/api/auth/[...nextauth]/config";
 import { getRandomDream } from "@/app/api/dream/fetchers";
 import { getArchetypes } from "@/app/api/archetype/fetchers";
 import { formatDream } from "@/lib/utils";
@@ -18,7 +18,9 @@ export default async function Home(): Promise<JSX.Element> {
     userEmail = session.user?.email as string;
     archetypes = await getArchetypes();
     const rawDream = await getRandomDream(userEmail);
-    dream = formatDream(rawDream, archetypes);
+    if (rawDream) {
+      dream = formatDream(rawDream, archetypes);
+    }
   }
 
   return (
