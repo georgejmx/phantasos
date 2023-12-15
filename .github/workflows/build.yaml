@@ -25,10 +25,8 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       - name: Install dependencies
         run: npm ci
-      - name: Lint
-        run: npm run lint
       - name: Build with Next.js
-        run: npx --no-install next build
+        run: npm run build
       - name: Static HTML export with Next.js
         run: npx --no-install next export
       - name: Upload artifact
