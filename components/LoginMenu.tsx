@@ -21,16 +21,16 @@ export default function LoginMenu(): JSX.Element {
     }
 
     createUser(email, password)
-      .then((ok) => {
-        if (ok) {
+      .then((response) => {
+        if (response.ok) {
           router.push("/api/auth/signin");
         } else {
-          setErrorMsg("Failed to create user");
+          setErrorMsg(response.message);
         }
       })
       .catch((error: unknown) => {
         console.error(error);
-        setErrorMsg("Error when creating user");
+        setErrorMsg("Client error when creating user");
       });
   }
 

@@ -1,5 +1,7 @@
 "use client";
 
+import { ApiResponse } from "./types";
+
 export async function postDream(
   dreamtext: string,
   archetype: string
@@ -18,7 +20,7 @@ export async function postDream(
 export async function createUser(
   email: string,
   password: string
-): Promise<boolean> {
+): Promise<ApiResponse> {
   const response = await fetch("/api/user", {
     method: "POST",
     headers: {
@@ -26,6 +28,13 @@ export async function createUser(
     },
     body: JSON.stringify({ email, password }),
   });
-  if (response.status < 300) return true;
-  return false;
+  if (response.status === 201) {
+    const responseBody = await response.json();
+    return { ok: true, message: responseBody.message };
+  } else if (response.status === 500) {
+    const responseBody = await response.json();
+    return { ok: false, message: responseBody.message };
+  } else {
+    return { ok: false, message: "Network error" };
+  }
 }

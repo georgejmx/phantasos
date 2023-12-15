@@ -13,16 +13,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       email: body.email,
       hash: await hash(body.password, 10),
     };
-    collection.insertOne(newUser);
+    await collection.insertOne(newUser);
     return NextResponse.json(
       { message: `User created with email ${newUser.email}` },
       { status: 201 }
     );
   } catch (error: unknown) {
-    console.error(error);
-    return NextResponse.json(
-      { message: "Unable to create user" },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: String(error) }, { status: 500 });
   }
 }

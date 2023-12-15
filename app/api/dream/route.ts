@@ -19,16 +19,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       date: new Date(),
       userEmail: session.user?.email as string,
     };
-    collection.insertOne(newDream);
+    await collection.insertOne(newDream);
     return NextResponse.json(
       { message: "Dream successfully logged" },
       { status: 201 }
     );
   } catch (error: unknown) {
-    console.error(error);
-    return NextResponse.json(
-      { message: "Unable to record dream" },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: String(error) }, { status: 500 });
   }
 }

@@ -11,6 +11,7 @@ export async function getDreams(email: string): Promise<RawDream[]> {
   for await (const item of cursor) {
     out.push(item as unknown as RawDream);
   }
+  await cursor.close();
   return out;
 }
 
@@ -25,5 +26,6 @@ export async function getRandomDream(email: string): Promise<RawDream | null> {
   for await (const item of cursor) {
     result = item as unknown as RawDream;
   }
+  await cursor.close();
   return result;
 }

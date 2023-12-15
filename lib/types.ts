@@ -1,9 +1,14 @@
 import { ObjectId } from "mongodb";
 
+export interface ApiResponse {
+  ok: boolean;
+  message: string;
+}
+
 /* Props */
 
 export interface MenuProps {
-  email: string | null | undefined;
+  email: string | null;
   dream: Dream | null;
   archetypes: Archetype[] | null;
 }
@@ -66,7 +71,6 @@ export type Dream = {
 };
 
 export type Archetype = {
-  _id: ObjectId;
   name: string;
   goal: string;
   aspect: string;

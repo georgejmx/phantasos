@@ -6,7 +6,7 @@ import { RecordModalProps } from "@/lib/types";
 import { postDream } from "@/lib/calls";
 import SelectArchetypeGrid from "./SelectArchetypeGrid";
 
-const DREAM_LIMIT = 1000;
+const DREAMTEXT_LIMIT = 1000;
 
 function RecordDream(props: RecordModalProps): JSX.Element {
   const [selectedArchetype, setSelectedArchetype] = useState<string>("");
@@ -64,7 +64,7 @@ function RecordDream(props: RecordModalProps): JSX.Element {
                 onChange={handleDreamtext}
                 id="dream-input"
                 className="my-1 text-purple-500 w-6/12 h-16 border border-purple-500 focus:border-purple-500 rounded bg-zinc-900"
-                maxLength={DREAM_LIMIT}
+                maxLength={DREAMTEXT_LIMIT}
               ></textarea>
             </div>
 
