@@ -20,6 +20,8 @@ function Dream(props: DreamProps): JSX.Element {
             src={getCorrectThumbnail()}
             alt={props.aspect + " image thumbnail"}
             className="w-9 h-9 bg-pink-200 p-0.5 rounded-full"
+            width={10}
+            height={10}
           />
           <p className="py-1 text-pink-200 font-montserrat italic ml-2">
             In search of {props.goal}
