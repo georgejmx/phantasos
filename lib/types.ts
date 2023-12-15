@@ -9,12 +9,12 @@ export interface MenuProps {
 }
 
 export interface NavigationPaneProps {
-  dream: Dream;
+  dream: Dream | null;
   archetypes: Archetype[];
 }
 
 export interface RediscoverModalProps {
-  dream: Dream;
+  dream: Dream | null;
   onCancel: () => void;
 }
 
@@ -26,7 +26,7 @@ export interface RecordModalProps {
 
 export interface SelectArchetypeGridProps {
   archetypes: Archetype[];
-  onSelect: (id: number) => void;
+  onSelect: (name: string) => void;
 }
 
 export type DreamProps = {
@@ -44,19 +44,30 @@ export type User = {
   hash: string;
 };
 
-export type Dream = {
-  id: number;
+export type CoreDream = {
   dreamtext: string;
+  archetype: string;
+};
+
+export type RawDream = CoreDream & {
+  _id?: ObjectId;
+  userEmail: string;
+  date: Date;
+};
+
+export type Dream = {
+  id: string;
+  userEmail: string;
+  dreamtext: string;
+  archetype: string;
   date: string;
-  archetypeId?: number;
-  goal?: string;
-  aspect?: string;
+  goal: string;
+  aspect: string;
 };
 
 export type Archetype = {
-  id: number;
+  _id: ObjectId;
   name: string;
   goal: string;
   aspect: string;
-  description: string;
 };

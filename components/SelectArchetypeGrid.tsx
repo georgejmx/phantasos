@@ -6,7 +6,7 @@ import { SelectArchetypeGridProps, Archetype } from "@/lib/types";
 
 function SelectArchetypeGrid(props: SelectArchetypeGridProps): JSX.Element {
   const archetypes: Archetype[] = props.archetypes;
-  const [selectedArchetype, setSelectedArchetype] = useState<number>(0);
+  const [selectedArchetype, setSelectedArchetype] = useState<string>("");
 
   useEffect(() => {
     props.onSelect(selectedArchetype);
@@ -20,8 +20,8 @@ function SelectArchetypeGrid(props: SelectArchetypeGridProps): JSX.Element {
       <div className="mb-4">
         {archetypes.map((archetype) => (
           <button
-            key={archetype.id}
-            onClick={() => setSelectedArchetype(archetype.id)}
+            key={archetype._id.toString()}
+            onClick={() => setSelectedArchetype(archetype.name)}
             className="py-2 px-6 mr-2 mb-2 bg-slate-900 font-montserrat rounded-full text-pink-400 focus:outline active:bg-purple-500 active:border-fuchsia-400"
           >
             {archetype.name}

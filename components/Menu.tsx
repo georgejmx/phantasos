@@ -1,5 +1,6 @@
 import { MenuProps } from "@/lib/types";
 import NavigationPane from "./NavigationPane";
+import ErrorBox from "./ErrorBox";
 
 export default function Menu(props: MenuProps): JSX.Element {
   return (
@@ -9,12 +10,10 @@ export default function Menu(props: MenuProps): JSX.Element {
           You are signed in as {props.email}
         </p>
       )}
-      {props.dream && props.archetypes ? (
+      {props.archetypes ? (
         <NavigationPane dream={props.dream} archetypes={props.archetypes} />
       ) : (
-        <p className="text-cyan-500 italic p-2 my-4">
-          Error hydrating app with data
-        </p>
+        <ErrorBox />
       )}
     </>
   );

@@ -22,7 +22,6 @@ export default function LoginMenu(): JSX.Element {
 
     createUser(email, password)
       .then((ok) => {
-        console.log(ok);
         if (ok) {
           router.push("/api/auth/signin");
         } else {

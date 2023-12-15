@@ -31,7 +31,8 @@ function RediscoverDream(props: RediscoverModalProps): JSX.Element {
               />
             ) : (
               <p className="text-cyan-500 italic p-2 my-4">
-                Error fetching a dream from server
+                You have to dreams to display, record dreams to see a random
+                memory here
               </p>
             )}
 

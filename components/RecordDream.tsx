@@ -6,14 +6,15 @@ import { RecordModalProps } from "@/lib/types";
 import { postDream } from "@/lib/calls";
 import SelectArchetypeGrid from "./SelectArchetypeGrid";
 
+const DREAM_LIMIT = 1000;
+
 function RecordDream(props: RecordModalProps): JSX.Element {
-  const [selectedArchetypeId, setSelectedArchetypeId] = useState<number>(0);
+  const [selectedArchetype, setSelectedArchetype] = useState<string>("");
   const [dreamtext, setDreamtext] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
-  const dreamLimit: number = 1000;
 
-  function onSelectArchetype(id: number) {
-    setSelectedArchetypeId(id);
+  function onSelectArchetype(name: string) {
+    setSelectedArchetype(name);
   }
 
   function cancelHandler() {
@@ -22,12 +23,12 @@ function RecordDream(props: RecordModalProps): JSX.Element {
 
   // Handle user attempt to post dream
   function confirmHandler() {
-    if (selectedArchetypeId === 0) {
+    if (!selectedArchetype) {
       setErrorMsg("Please select an archetype to mark your dream...");
       return;
     }
 
-    postDream(dreamtext, selectedArchetypeId)
+    postDream(dreamtext, selectedArchetype)
       .then((ok) => {
         if (ok) {
           props.onConfirm();
@@ -63,7 +64,7 @@ function RecordDream(props: RecordModalProps): JSX.Element {
                 onChange={handleDreamtext}
                 id="dream-input"
                 className="my-1 text-purple-500 w-6/12 h-16 border border-purple-500 focus:border-purple-500 rounded bg-zinc-900"
-                maxLength={dreamLimit}
+                maxLength={DREAM_LIMIT}
               ></textarea>
             </div>
 
