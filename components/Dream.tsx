@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { DreamProps } from "@/lib/types";
 
 function Dream(props: DreamProps): JSX.Element {
@@ -14,10 +16,10 @@ function Dream(props: DreamProps): JSX.Element {
       <p className="py-1">{props.text}</p>
       {props.goal && props.aspect && (
         <div className="flex">
-          <img
-            className="w-9 h-9 bg-pink-200 p-0.5 rounded-full"
+          <Image
             src={getCorrectThumbnail()}
             alt={props.aspect + " image thumbnail"}
+            className="w-9 h-9 bg-pink-200 p-0.5 rounded-full"
           />
           <p className="py-1 text-pink-200 font-montserrat italic ml-2">
             In search of {props.goal}

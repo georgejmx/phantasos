@@ -10,7 +10,7 @@ function SelectArchetypeGrid(props: SelectArchetypeGridProps): JSX.Element {
 
   useEffect(() => {
     props.onSelect(selectedArchetype);
-  }, [selectedArchetype]);
+  }, [selectedArchetype, props]);
 
   return (
     <>

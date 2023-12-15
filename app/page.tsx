@@ -33,7 +33,7 @@ export default async function Home(): Promise<JSX.Element> {
       />
       <h1 className="text-3xl font-bold text-purple-500">Phantasos</h1>
       <p className="italic text-white p-2 text-center">
-        "where untold memories are rediscovered..."
+        &quot;where untold memories are rediscovered...&quot;
       </p>
       {session ? (
         <Menu email={userEmail} dream={dream} archetypes={archetypes} />
