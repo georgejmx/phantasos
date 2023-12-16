@@ -6,7 +6,7 @@ import { NavigationPaneProps } from "@/lib/types";
 import RecordDream from "./RecordDream";
 import RediscoverDream from "./RediscoverDream";
 
-function NavigationPane(props: NavigationPaneProps): JSX.Element {
+export default function NavigationPane(props: NavigationPaneProps): JSX.Element {
   const [isRecordingDream, setRecordingDream] = useState(false);
   const [isRediscovering, setRediscovering] = useState(false);
 
@@ -44,5 +44,3 @@ function NavigationPane(props: NavigationPaneProps): JSX.Element {
     </>
   );
 }
-
-export default NavigationPane;

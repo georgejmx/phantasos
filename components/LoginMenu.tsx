@@ -65,10 +65,7 @@ export default function LoginMenu(): JSX.Element {
             />
           </div>
           <div className="items-center">
-            <label
-              htmlFor="password-input"
-              className="mt-2 text-purple-500 mr-2"
-            >
+            <label htmlFor="password-input" className="mt-2 text-purple-500 mr-2">
               Password:
             </label>
             <input
@@ -90,9 +87,7 @@ export default function LoginMenu(): JSX.Element {
             Upon registration, you will be redirected to the sign in page
           </p>
 
-          {errorMsg && (
-            <p className="text-cyan-500 italic p-2 my-4">{errorMsg}</p>
-          )}
+          {errorMsg && <p className="text-cyan-500 italic p-2 my-4">{errorMsg}</p>}
         </div>
       )}
     </>

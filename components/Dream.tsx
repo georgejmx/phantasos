@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { DreamProps } from "@/lib/types";
 
-function Dream(props: DreamProps): JSX.Element {
+export default function Dream(props: DreamProps): JSX.Element {
   // Return correct image import
   const getCorrectThumbnail = () => {
     if (props.aspect === "ego") return "/aspect_thumbs/ego.png";
@@ -31,5 +31,3 @@ function Dream(props: DreamProps): JSX.Element {
     </div>
   );
 }
-
-export default Dream;

@@ -20,9 +20,7 @@ export default async function History(): Promise<JSX.Element> {
 
   return (
     <>
-      <h1 className="text-xl font-bold text-purple-500 underline">
-        Full History
-      </h1>
+      <h1 className="text-xl font-bold text-purple-500 underline">Full History</h1>
       {session && dreams ? (
         <div className="overflow-auto">
           {dreams.map((dream) => (

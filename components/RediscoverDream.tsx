@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { RediscoverModalProps } from "@/lib/types";
 import Dream from "./Dream";
 
-function RediscoverDream(props: RediscoverModalProps): JSX.Element {
+export default function RediscoverDream(props: RediscoverModalProps): JSX.Element {
   const router = useRouter();
 
   function returnHandler() {
@@ -31,8 +31,7 @@ function RediscoverDream(props: RediscoverModalProps): JSX.Element {
               />
             ) : (
               <p className="text-cyan-500 italic p-2 my-4">
-                You have to dreams to display, record dreams to see a random
-                memory here
+                You have to dreams to display, record dreams to see a random memory here
               </p>
             )}
 
@@ -56,5 +55,3 @@ function RediscoverDream(props: RediscoverModalProps): JSX.Element {
     </div>
   );
 }
-
-export default RediscoverDream;

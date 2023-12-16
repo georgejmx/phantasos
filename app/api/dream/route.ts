@@ -20,10 +20,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       userEmail: session.user?.email as string,
     };
     await collection.insertOne(newDream);
-    return NextResponse.json(
-      { message: "Dream successfully logged" },
-      { status: 201 }
-    );
+    return NextResponse.json({ message: "Dream successfully logged" }, { status: 201 });
   } catch (error: unknown) {
     return NextResponse.json({ message: String(error) }, { status: 500 });
   }

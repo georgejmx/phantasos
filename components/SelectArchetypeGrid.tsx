@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { SelectArchetypeGridProps, Archetype } from "@/lib/types";
 
-function SelectArchetypeGrid(props: SelectArchetypeGridProps): JSX.Element {
+export default function SelectArchetypeGrid(props: SelectArchetypeGridProps): JSX.Element {
   const archetypes: Archetype[] = props.archetypes;
   const [selectedArchetype, setSelectedArchetype] = useState<string>("");
 
@@ -14,9 +14,7 @@ function SelectArchetypeGrid(props: SelectArchetypeGridProps): JSX.Element {
 
   return (
     <>
-      <p className="px-10 py-2 underline font-montserrat text-pink-400">
-        Archetype
-      </p>
+      <p className="px-10 py-2 underline font-montserrat text-pink-400">Archetype</p>
       <div className="mb-4">
         {archetypes.map((archetype) => (
           <button
@@ -31,5 +29,3 @@ function SelectArchetypeGrid(props: SelectArchetypeGridProps): JSX.Element {
     </>
   );
 }
-
-export default SelectArchetypeGrid;

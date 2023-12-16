@@ -9,16 +9,10 @@ export const metadata: Metadata = {
   description: "Document your dreams..",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} bg-gradient-to-br from-black to-purple-900 p-4`}
-      >
+      <body className={`${inter.className} bg-gradient-to-br from-black to-purple-900 p-4`}>
         <main className="m-0 p-0 flex flex-col flex-wrap justify-center items-center bg-cover h-screen w-screen font-serif">
           {children}
         </main>

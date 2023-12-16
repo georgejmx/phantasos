@@ -2,10 +2,7 @@
 
 import { ApiResponse } from "./types";
 
-export async function postDream(
-  dreamtext: string,
-  archetype: string
-): Promise<boolean> {
+export async function postDream(dreamtext: string, archetype: string): Promise<boolean> {
   const response = await fetch("/api/dream", {
     method: "POST",
     headers: {
@@ -17,10 +14,7 @@ export async function postDream(
   return false;
 }
 
-export async function createUser(
-  email: string,
-  password: string
-): Promise<ApiResponse> {
+export async function createUser(email: string, password: string): Promise<ApiResponse> {
   const response = await fetch("/api/user", {
     method: "POST",
     headers: {

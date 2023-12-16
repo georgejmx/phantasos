@@ -8,7 +8,7 @@ import SelectArchetypeGrid from "./SelectArchetypeGrid";
 
 const DREAMTEXT_LIMIT = 1000;
 
-function RecordDream(props: RecordModalProps): JSX.Element {
+export default function RecordDream(props: RecordModalProps): JSX.Element {
   const [selectedArchetype, setSelectedArchetype] = useState<string>("");
   const [dreamtext, setDreamtext] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
@@ -73,9 +73,7 @@ function RecordDream(props: RecordModalProps): JSX.Element {
               onSelect={onSelectArchetype}
             />
 
-            {errorMsg && (
-              <p className="text-cyan-500 italic p-2 my-4">{errorMsg}</p>
-            )}
+            {errorMsg && <p className="text-cyan-500 italic p-2 my-4">{errorMsg}</p>}
 
             <div>
               <button
@@ -97,5 +95,3 @@ function RecordDream(props: RecordModalProps): JSX.Element {
     </div>
   );
 }
-
-export default RecordDream;
