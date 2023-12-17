@@ -10,33 +10,33 @@ import Dream from "@/components/Dream";
 import ErrorBox from "@/components/ErrorBox";
 
 export default async function History(): Promise<JSX.Element> {
-  const session = await getServerSession(authConfig);
-  let dreams: DreamType[] = [];
-  if (session) {
-    const archetypes = await getArchetypes();
-    const rawDreams = await getDreams(session.user?.email as string);
-    dreams = rawDreams.map((rawDream) => formatDream(rawDream, archetypes));
-  }
+    const session = await getServerSession(authConfig);
+    let dreams: DreamType[] = [];
+    if (session) {
+        const archetypes = await getArchetypes();
+        const rawDreams = await getDreams(session.user?.email as string);
+        dreams = rawDreams.map((rawDream) => formatDream(rawDream, archetypes));
+    }
 
-  return (
-    <>
-      <h1 className="text-xl font-bold text-purple-500 underline">Full History</h1>
-      {session && dreams ? (
-        <div className="overflow-auto">
-          {dreams.map((dream) => (
-            <Dream
-              key={dream.id}
-              text={dream.dreamtext}
-              date={dream.date}
-              goal={dream.goal}
-              aspect={dream.aspect}
-            />
-          ))}
-        </div>
-      ) : (
-        <ErrorBox />
-      )}
-      <ActionBar />
-    </>
-  );
+    return (
+        <>
+            <h1 className="text-xl font-bold text-purple-500 underline">Full History</h1>
+            {session && dreams ? (
+                <div className="overflow-auto">
+                    {dreams.map((dream) => (
+                        <Dream
+                            key={dream.id}
+                            text={dream.dreamtext}
+                            date={dream.date}
+                            goal={dream.goal}
+                            aspect={dream.aspect}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <ErrorBox />
+            )}
+            <ActionBar />
+        </>
+    );
 }
