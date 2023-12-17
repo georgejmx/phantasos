@@ -7,6 +7,11 @@ export interface ApiResponse {
 
 /* Props */
 
+export interface GlobalErrorProps {
+    error: Error & { digest?: string };
+    reset: () => void;
+}
+
 export interface MenuProps {
     email: string | null;
     dream: Dream | null;

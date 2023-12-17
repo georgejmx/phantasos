@@ -5,9 +5,9 @@ import { DreamProps } from "@/lib/types";
 export default function Dream(props: DreamProps): JSX.Element {
     // Return correct image import
     const getCorrectThumbnail = () => {
-        if (props.aspect === "ego") return "/aspect_thumbs/ego.png";
-        if (props.aspect === "soul") return "/aspect_thumbs/soul.png";
-        return "/aspect_thumbs/self.png";
+        if (props.aspect === "ego") return "/aspects/ego.png";
+        if (props.aspect === "soul") return "/aspects/soul.png";
+        return "/aspects/self.png";
     };
 
     return (

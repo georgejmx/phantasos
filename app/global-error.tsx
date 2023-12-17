@@ -1,25 +1,22 @@
 "use client";
 
-export default function GlobalError({
-    error,
-    reset,
-}: {
-    error: Error & { digest?: string };
-    reset: () => void;
-}) {
+import { GlobalErrorProps } from "@/lib/types";
+
+export default function GlobalError(props: GlobalErrorProps) {
     return (
-        <html className="h-full">
-            <body className="flex items-center justify-center h-full bg-gray-100">
-                <div className="text-center">
-                    <h2 className="text-2xl font-bold text-red-600 mb-4">
+        <html lang="en">
+            <body className="h-screen w-screen bg-gradient-to-br from-black to-purple-900 p-4">
+                <div className="flex flex-col flex-wrap justify-center items-center bg-cover font-serif">
+                    <h2 className="text-2xl font-bold text-cyan-500 mb-4">
                         Something went wrong!
                     </h2>
-                    <p className="text-gray-700">{error.message}</p>
+                    <p className="text-cyan-99 text-xl">{props.error.message}</p>
+                    <p className="text-cyan-99 text-md">{props.error.digest || "Oops!"}</p>
                     <button
-                        onClick={() => reset()}
-                        className="mt-4 px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 focus:outline-none focus:shadow-outline-blue active:bg-purple-800"
+                        onClick={() => props.reset()}
+                        className="mt-4 px-4 py-2 border-2 border-purple-500 text-purple-500 font-bold p-1 bg-zinc-900 active:bg-purple-800"
                     >
-                        Try again
+                        Retry
                     </button>
                 </div>
             </body>
