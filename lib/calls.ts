@@ -2,7 +2,10 @@
 
 import { ApiResponse } from "./types";
 
-export async function postDream(dreamtext: string, archetype: string): Promise<boolean> {
+export async function postDream(
+  dreamtext: string,
+  archetype: string
+): Promise<ApiResponse> {
   const response = await fetch("/api/dream", {
     method: "POST",
     headers: {
@@ -10,8 +13,15 @@ export async function postDream(dreamtext: string, archetype: string): Promise<b
     },
     body: JSON.stringify({ dreamtext, archetype }),
   });
-  if (response.status < 300) return true;
-  return false;
+  if (response.status === 201) {
+    const responseBody = await response.json();
+    return { ok: true, message: responseBody.message };
+  } else if (response.status === 400 || 500) {
+    const responseBody = await response.json();
+    return { ok: false, message: responseBody.message };
+  } else {
+    return { ok: false, message: "Network error" };
+  }
 }
 
 export async function createUser(email: string, password: string): Promise<ApiResponse> {
@@ -25,7 +35,7 @@ export async function createUser(email: string, password: string): Promise<ApiRe
   if (response.status === 201) {
     const responseBody = await response.json();
     return { ok: true, message: responseBody.message };
-  } else if (response.status === 500) {
+  } else if (response.status === 400 || 500) {
     const responseBody = await response.json();
     return { ok: false, message: responseBody.message };
   } else {

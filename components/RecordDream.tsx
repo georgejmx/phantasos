@@ -13,13 +13,8 @@ export default function RecordDream(props: RecordModalProps): JSX.Element {
   const [dreamtext, setDreamtext] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
 
-  function onSelectArchetype(name: string) {
-    setSelectedArchetype(name);
-  }
-
-  function cancelHandler() {
-    props.onCancel();
-  }
+  const selectArchetypeHandler = (name: string) => setSelectedArchetype(name);
+  const cancelHandler = () => props.onCancel();
 
   // Handle user attempt to post dream
   function confirmHandler() {
@@ -29,16 +24,16 @@ export default function RecordDream(props: RecordModalProps): JSX.Element {
     }
 
     postDream(dreamtext, selectedArchetype)
-      .then((ok) => {
-        if (ok) {
+      .then((response) => {
+        if (response.ok) {
           props.onConfirm();
         } else {
-          setErrorMsg("Failed to post dream");
+          setErrorMsg(response.message);
         }
       })
       .catch((error: unknown) => {
         console.error(error);
-        setErrorMsg("Error when posting dream");
+        setErrorMsg("Client error when posting dream");
       });
   }
 
@@ -70,7 +65,7 @@ export default function RecordDream(props: RecordModalProps): JSX.Element {
 
             <SelectArchetypeGrid
               archetypes={props.archetypes}
-              onSelect={onSelectArchetype}
+              onSelect={selectArchetypeHandler}
             />
 
             {errorMsg && <p className="text-cyan-500 italic p-2 my-4">{errorMsg}</p>}

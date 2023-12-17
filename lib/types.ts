@@ -34,12 +34,18 @@ export interface SelectArchetypeGridProps {
   onSelect: (name: string) => void;
 }
 
-export type DreamProps = {
+export interface TextInputProps {
+  label: string;
+  onUpdate: (value: string) => void;
+  isMasked: boolean;
+}
+
+export interface DreamProps {
   text: string;
   date: string;
   goal?: string;
   aspect?: string;
-};
+}
 
 /* Entities */
 
