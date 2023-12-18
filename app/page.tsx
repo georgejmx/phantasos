@@ -4,7 +4,7 @@ import Image from "next/image";
 import { authConfig } from "@/app/api/auth/[...nextauth]/config";
 import { getRandomDream } from "@/app/api/dream/fetchers";
 import { getArchetypes } from "@/app/api/archetype/fetchers";
-import { formatDream } from "@/lib/utils";
+import { formatDream } from "@/lib/formatters";
 import { Dream, Archetype } from "@/lib/types";
 import Menu from "@/components/Menu";
 import LoginMenu from "@/components/LoginMenu";
@@ -19,7 +19,7 @@ export default async function Home(): Promise<JSX.Element> {
         archetypes = await getArchetypes();
         const rawDream = await getRandomDream(userEmail);
         if (rawDream) {
-            dream = formatDream(rawDream, archetypes);
+            dream = formatDream(rawDream, archetypes, userEmail);
         }
     }
 

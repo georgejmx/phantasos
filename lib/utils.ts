@@ -1,5 +1,3 @@
-import { Archetype, Dream, RawDream } from "./types";
-
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
@@ -11,22 +9,14 @@ export function isValidPassword(input: string): boolean {
     return PASSWORD_REGEX.test(input);
 }
 
-function parseDate(date: Date): string {
+export function parseDate(date: Date): string {
     return date.toUTCString().split(" ").slice(0, 4).join(" ");
 }
 
-export function formatDream(rawDream: RawDream, archetypes: Archetype[]): Dream {
-    const dreamArchetype = archetypes.find((a) => a.name == rawDream.archetype);
-    if (!dreamArchetype) {
-        throw Error("Invalid dream archetype entry");
+export function reverseString(str: string): string {
+    var newString = "";
+    for (var i = str.length - 1; i >= 0; i--) {
+        newString += str[i];
     }
-    return {
-        id: rawDream._id!!.toString(),
-        userEmail: rawDream.userEmail,
-        dreamtext: rawDream.dreamtext,
-        archetype: rawDream.archetype,
-        date: parseDate(rawDream.date),
-        goal: dreamArchetype.goal,
-        aspect: dreamArchetype.aspect,
-    };
+    return newString;
 }

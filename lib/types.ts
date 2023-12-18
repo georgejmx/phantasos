@@ -65,8 +65,10 @@ export type CoreDream = {
     archetype: string;
 };
 
-export type RawDream = CoreDream & {
+export type RawDream = {
     _id?: ObjectId;
+    text: string;
+    archetype: string;
     userEmail: string;
     date: Date;
 };

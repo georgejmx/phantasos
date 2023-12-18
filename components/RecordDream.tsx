@@ -13,6 +13,8 @@ export default function RecordDream(props: RecordModalProps): JSX.Element {
     const [dreamtext, setDreamtext] = useState<string>("");
     const [errorMsg, setErrorMsg] = useState<string>("");
 
+    const textHandler = (event: ChangeEvent<HTMLTextAreaElement>) =>
+        setDreamtext(event.target.value);
     const selectArchetypeHandler = (name: string) => setSelectedArchetype(name);
     const cancelHandler = () => props.onCancel();
 
@@ -37,10 +39,6 @@ export default function RecordDream(props: RecordModalProps): JSX.Element {
             });
     }
 
-    function handleDreamtext(event: ChangeEvent<HTMLTextAreaElement>) {
-        setDreamtext(event.target.value);
-    }
-
     return (
         <div role="dialog" className="z-50 fixed inset-2 top-12 overflow-y-auto">
             <div className="flex items-end justify-center text-center md:items-center sm:block">
@@ -56,7 +54,7 @@ export default function RecordDream(props: RecordModalProps): JSX.Element {
                             </label>
                             <textarea
                                 value={dreamtext}
-                                onChange={handleDreamtext}
+                                onChange={textHandler}
                                 id="dream-input"
                                 className="my-1 text-purple-500 w-6/12 h-16 border border-purple-500 focus:border-purple-500 rounded bg-zinc-900"
                                 maxLength={DREAMTEXT_LIMIT}

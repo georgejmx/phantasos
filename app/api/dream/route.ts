@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth/next";
 import { authConfig } from "@/app/api/auth/[...nextauth]/config";
 import clientPromise from "@/lib/setupMongo";
 import { CoreDream, RawDream } from "@/lib/types";
+import { encryptText } from "@/lib/security";
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
     const session = await getServerSession(authConfig);
@@ -11,13 +12,15 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         if (!session) {
             throw Error("Unable to confirm client credentials");
         }
+        const userEmail = session.user?.email as string;
         const client = await clientPromise;
         const collection = client.db(process.env.DB_NAME).collection("dreams");
         const body: CoreDream = await request.json();
         const newDream: RawDream = {
-            ...body,
+            text: encryptText(body.dreamtext, userEmail),
+            archetype: body.archetype,
             date: new Date(),
-            userEmail: session.user?.email as string,
+            userEmail,
         };
         await collection.insertOne(newDream);
         return NextResponse.json({ message: "Dream successfully logged" }, { status: 201 });
