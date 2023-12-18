@@ -8,7 +8,7 @@ export default function ActionBar(): JSX.Element {
     return (
         <button
             onClick={() => router.push("/")}
-            className="border-2 border-purple-500 text-purple-500 font-bold p-1 bg-zinc-900 mt-2"
+            className="border-2 border-purple-500 text-purple-500 font-bold p-1 bg-zinc-900 my-2"
         >
             Go home
         </button>

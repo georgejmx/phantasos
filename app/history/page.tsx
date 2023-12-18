@@ -33,6 +33,11 @@ export default async function History(): Promise<JSX.Element> {
                             aspect={dream.aspect}
                         />
                     ))}
+                    {dreams.length === 0 && (
+                        <p className="text-cyan-500 italic p-2 my-4">
+                            You have no dreams to display
+                        </p>
+                    )}
                 </div>
             ) : (
                 <ErrorBox />

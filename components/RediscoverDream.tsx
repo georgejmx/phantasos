@@ -29,7 +29,7 @@ export default function RediscoverDream(props: RediscoverModalProps): JSX.Elemen
                             />
                         ) : (
                             <p className="text-cyan-500 italic p-2 my-4">
-                                You have to dreams to display, record dreams to see a random
+                                You have no dreams to display, record dreams to see a random
                                 memory here
                             </p>
                         )}
