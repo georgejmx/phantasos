@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { authConfig } from "@/app/api/auth/[...nextauth]/config";
 import { getDreams } from "@/app/api/dream/fetchers";
 import { getArchetypes } from "@/app/api/archetype/fetchers";
-import { formatDream } from "@/lib/utils";
+import { formatDream } from "@/lib/formatters";
 import { Dream as DreamType } from "@/lib/types";
 import ActionBar from "@/components/ActionBar";
 import Dream from "@/components/Dream";
@@ -13,9 +13,10 @@ export default async function History(): Promise<JSX.Element> {
     const session = await getServerSession(authConfig);
     let dreams: DreamType[] = [];
     if (session) {
+        const email = session.user?.email;
         const archetypes = await getArchetypes();
-        const rawDreams = await getDreams(session.user?.email as string);
-        dreams = rawDreams.map((rawDream) => formatDream(rawDream, archetypes));
+        const rawDreams = await getDreams(email as string);
+        dreams = rawDreams.map((rawDream) => formatDream(rawDream, archetypes, email));
     }
 
     return (

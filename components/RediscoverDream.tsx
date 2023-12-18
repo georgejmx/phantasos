@@ -8,9 +8,7 @@ import Dream from "./Dream";
 export default function RediscoverDream(props: RediscoverModalProps): JSX.Element {
     const router = useRouter();
 
-    function returnHandler() {
-        props.onCancel();
-    }
+    const returnHandler = () => props.onCancel();
 
     return (
         <div role="dialog" className="z-50 fixed inset-2 top-12 overflow-y-auto">
