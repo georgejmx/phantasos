@@ -11,11 +11,11 @@ import LoginMenu from "@/components/LoginMenu";
 
 export default async function Home(): Promise<JSX.Element> {
     const session = await getServerSession(authConfig);
-    let userEmail: string | null = null;
+    let userEmail = "";
     let dream: Dream | null = null;
     let archetypes: Archetype[] | null = null;
-    if (session) {
-        userEmail = session.user?.email as string;
+    if (session?.user?.email) {
+        userEmail = session.user.email;
         archetypes = await getArchetypes();
         const rawDream = await getRandomDream(userEmail);
         if (rawDream) {

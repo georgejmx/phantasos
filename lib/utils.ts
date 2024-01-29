@@ -1,6 +1,13 @@
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
+// Return correct image import
+export const getCorrectThumbnail = (aspect: string) => {
+    if (aspect === "ego") return "/aspects/ego.png";
+    if (aspect === "soul") return "/aspects/soul.png";
+    return "/aspects/self.png";
+};
+
 export function isValidEmail(input: string): boolean {
     return EMAIL_REGEX.test(input);
 }

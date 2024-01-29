@@ -13,9 +13,9 @@ export default async function History(): Promise<JSX.Element> {
     const session = await getServerSession(authConfig);
     let dreams: DreamType[] = [];
     if (session) {
-        const email = session.user?.email;
+        const email = session.user?.email as string;
         const archetypes = await getArchetypes();
-        const rawDreams = await getDreams(email as string);
+        const rawDreams = await getDreams(email);
         dreams = rawDreams.map((rawDream) => formatDream(rawDream, archetypes, email));
     }
 
