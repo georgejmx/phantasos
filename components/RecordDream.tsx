@@ -42,7 +42,7 @@ export default function RecordDream(props: RecordModalProps): JSX.Element {
     return (
         <div role="dialog" className="z-50 fixed inset-2 top-12 overflow-y-auto">
             <div className="flex items-end justify-center text-center md:items-center sm:block">
-                <div className="inline-block max-w-prose overflow-hidden text-left transition-all transform bg-black font-serif 2xl:max-w-2xl xl:w-3/5">
+                <div className="inline-block max-w-prose overflow-hidden text-left transition-all transform bg-black 2xl:max-w-2xl xl:w-3/5">
                     <div className="relative py-3 md:px-10 border border-b-4 border-purple-500 px-2">
                         <h1 className="mb-3 text-purple-500 font-bold font-xl underline-offset-1">
                             Record Dream

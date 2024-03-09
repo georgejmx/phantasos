@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { DreamProps } from "@/lib/types";
-import { getCorrectThumbnail } from "@/lib/utils";
+import { aspectColourStyleMap, getCorrectThumbnail } from "@/lib/utils";
+import type { DreamProps } from "@/lib/types";
 
 export default function Dream(props: DreamProps): JSX.Element {
     return (
@@ -12,7 +12,9 @@ export default function Dream(props: DreamProps): JSX.Element {
                 <Image
                     src={getCorrectThumbnail(props.aspect!)}
                     alt={props.aspect + " image thumbnail"}
-                    className="w-9 h-9 bg-pink-200 p-0.5 rounded-full"
+                    className={`w-9 h-9 p-0.5 rounded-full bg-${
+                        aspectColourStyleMap[props.aspect!]
+                    }`}
                     width={10}
                     height={10}
                 />

@@ -18,7 +18,7 @@ export default function SelectArchetypeGrid(props: SelectArchetypeGridProps): JS
 
     return (
         <>
-            <div className="py-2 px-100">
+            <div className="flex flex-row py-2 px-100">
                 <p className="underline font-montserrat text-pink-400 mr-2">Archetype</p>
                 <a onClick={() => router.push("/archetype")}>
                     <Image
@@ -27,6 +27,7 @@ export default function SelectArchetypeGrid(props: SelectArchetypeGridProps): JS
                         width={25}
                         height={10}
                         priority
+                        className="hover:bg-white rounded-full"
                     />
                 </a>
             </div>
