@@ -3,7 +3,7 @@ import type { Aspect } from "./types";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
-export const getCorrectThumbnail = (aspect: string) => {
+export const getCorrectThumbnail = (aspect: Aspect) => {
     if (aspect === "ego") return "/aspects/ego.png";
     if (aspect === "soul") return "/aspects/soul.png";
     return "/aspects/self.png";
