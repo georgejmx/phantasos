@@ -10,10 +10,10 @@ export default function Dream(props: DreamProps): JSX.Element {
             <p className="py-1">{props.text}</p>
             <div className="flex">
                 <Image
-                    src={getCorrectThumbnail(props.aspect!)}
+                    src={getCorrectThumbnail(props.aspect)}
                     alt={props.aspect + " image thumbnail"}
                     className={`w-9 h-9 p-0.5 rounded-full bg-${
-                        aspectColourStyleMap[props.aspect!]
+                        aspectColourStyleMap[props.aspect]
                     }`}
                     width={10}
                     height={10}

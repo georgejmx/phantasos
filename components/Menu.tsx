@@ -10,7 +10,7 @@ export default function Menu(props: MenuProps): JSX.Element {
                     You are signed in as {props.email}
                 </p>
             )}
-            {props.dream && props.archetypes ? (
+            {props.archetypes ? (
                 <NavigationPane dream={props.dream} archetypes={props.archetypes} />
             ) : (
                 <ErrorBox />

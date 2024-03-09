@@ -48,8 +48,8 @@ export interface TextInputProps {
 export interface DreamProps {
     text: string;
     date: string;
-    goal?: string;
-    aspect?: Aspect;
+    goal: string;
+    aspect: Aspect;
 }
 
 /* Entities */
