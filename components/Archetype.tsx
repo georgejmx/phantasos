@@ -22,7 +22,7 @@ export default function Archetype(props: ArchetypeType): JSX.Element {
                     width={40}
                     height={40}
                 />
-                <p className={`text-${aspectColourStyleMap[props.aspect]}`}>
+                <p className={`text-${aspectColourStyleMap[props.aspect]} mb-2`}>
                     Related to the {props.aspect}
                 </p>
                 <p className="text-pink-200 text-sm font-montserrat italic ml-2">
