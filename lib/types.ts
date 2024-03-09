@@ -48,8 +48,8 @@ export interface TextInputProps {
 export interface DreamProps {
     text: string;
     date: string;
-    goal?: string;
-    aspect?: string;
+    goal: string;
+    aspect: Aspect;
 }
 
 /* Entities */
@@ -73,6 +73,8 @@ export type RawDream = {
     date: Date;
 };
 
+export type Aspect = "ego" | "self" | "soul";
+
 export type Dream = {
     id: string;
     userEmail: string;
@@ -80,11 +82,12 @@ export type Dream = {
     archetype: string;
     date: string;
     goal: string;
-    aspect: string;
+    aspect: Aspect;
 };
 
 export type Archetype = {
     name: string;
     goal: string;
-    aspect: string;
+    aspect: Aspect;
+    description: string;
 };

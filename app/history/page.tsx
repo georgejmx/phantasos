@@ -13,9 +13,9 @@ export default async function History(): Promise<JSX.Element> {
     const session = await getServerSession(authConfig);
     let dreams: DreamType[] = [];
     if (session) {
-        const email = session.user?.email;
+        const email = session.user?.email as string;
         const archetypes = await getArchetypes();
-        const rawDreams = await getDreams(email as string);
+        const rawDreams = await getDreams(email);
         dreams = rawDreams.map((rawDream) => formatDream(rawDream, archetypes, email));
     }
 
@@ -23,7 +23,7 @@ export default async function History(): Promise<JSX.Element> {
         <>
             <h1 className="text-xl font-bold text-purple-500 underline">Full History</h1>
             {session && dreams ? (
-                <div className="overflow-auto">
+                <div className="overflow-auto lg:w-1/2">
                     {dreams.map((dream) => (
                         <Dream
                             key={dream.id}
