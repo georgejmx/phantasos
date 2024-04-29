@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import { createUser } from "@/lib/calls";
 import TextInput from "./TextInput";
+import ErrorBox from "./ErrorBox";
 
 export default function LoginMenu(): JSX.Element {
     const router = useRouter();
@@ -75,9 +76,7 @@ export default function LoginMenu(): JSX.Element {
                     <p className="text-purple-300 p-2 text-center italic">
                         Upon registration, you will be redirected to the sign in page
                     </p>
-                    {errorMsg && (
-                        <p className="text-cyan-500 italic p-2 my-4">{errorMsg}</p>
-                    )}
+                    {errorMsg && <ErrorBox message={errorMsg} />}
                 </div>
             )}
         </>

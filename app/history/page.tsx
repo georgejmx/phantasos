@@ -40,7 +40,7 @@ export default async function History(): Promise<JSX.Element> {
                     )}
                 </div>
             ) : (
-                <ErrorBox />
+                <ErrorBox message="Error displaying dream history" />
             )}
             <ActionBar />
         </>

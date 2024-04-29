@@ -7,9 +7,14 @@ export default function Archetype(props: ArchetypeType): JSX.Element {
     return (
         <div className="flex flex-row p-2 my-4 rounded opacity-75 bg-gradient-to-br from-pink-700 to-purple-700">
             <div className="flex flex-col justify-around p-2 max-w-80 basis-3/4">
-                <h2 className="text-purple-200 text-lg font-extrabold drop-shadow-xl mb-2">
-                    {toDefiniteArticle(props.name)}
-                </h2>
+                <div className="flex flex-row justify-center align-top">
+                    <h2 className="text-purple-200 text-lg font-extrabold drop-shadow-xl mb-2 mr-4">
+                        {toDefiniteArticle(props.name)}
+                    </h2>
+                    <button className="inline bg-blue-800 text-white h-8 text-sm rounded-lg px-2 mx-2 -my-0.5">
+                        {props.count || 0} dreams
+                    </button>
+                </div>
                 <p>{props.description}</p>
             </div>
             <div className="flex flex-col justify-center px-2 items-center basis-1/4">

@@ -1,9 +1,23 @@
 import { getArchetypes } from "@/app/api/archetype/fetchers";
+import { getDreamArchetypeCount } from "@/app/api/dream/fetchers";
 import ActionBar from "@/components/ActionBar";
 import Archetype from "@/components/Archetype";
+import { Archetype as ArchetypeType } from "@/lib/types";
+
+function joinArchetypesWithCount(
+    archetypes: ArchetypeType[],
+    counts: Record<string, number>
+): ArchetypeType[] {
+    for (let archetype of archetypes) {
+        archetype.count = counts[archetype.name];
+    }
+    return archetypes;
+}
 
 export default async function Archetypes(): Promise<JSX.Element> {
     const archetypes = await getArchetypes();
+    const archetypeCountData = await getDreamArchetypeCount();
+    const countedArchetypes = joinArchetypesWithCount(archetypes, archetypeCountData);
 
     return (
         <div className="max-w-prose text-center">
@@ -18,13 +32,14 @@ export default async function Archetypes(): Promise<JSX.Element> {
                 -Carl Jung
             </p>
             <div className="overflow-auto">
-                {archetypes.map((archetype) => (
+                {countedArchetypes.map((archetype) => (
                     <Archetype
                         key={archetype.name}
                         name={archetype.name}
                         goal={archetype.goal}
                         aspect={archetype.aspect}
                         description={archetype.description}
+                        count={archetype.count}
                     />
                 ))}
             </div>

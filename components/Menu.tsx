@@ -10,10 +10,10 @@ export default function Menu(props: MenuProps): JSX.Element {
                     You are signed in as {props.email}
                 </p>
             )}
-            {props.archetypes ? (
+            {props.dream && props.archetypes ? (
                 <NavigationPane dream={props.dream} archetypes={props.archetypes} />
             ) : (
-                <ErrorBox />
+                <ErrorBox message="Error fetching data from server" />
             )}
         </>
     );
