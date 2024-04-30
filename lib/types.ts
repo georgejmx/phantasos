@@ -62,6 +62,7 @@ export type User = {
     _id?: ObjectId;
     email: string;
     hash: string;
+    key: string;
 };
 
 export type CoreDream = {

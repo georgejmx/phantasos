@@ -4,6 +4,7 @@ import { hash } from "bcrypt";
 import clientPromise from "@/lib/setupMongo";
 import { User } from "@/lib/types";
 import { isValidEmail, isValidPassword } from "@/lib/utils";
+import { generateUserKey } from "@/lib/security";
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
     try {
@@ -18,6 +19,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         const newUser: User = {
             email: body.email,
             hash: await hash(body.password, 10),
+            key: generateUserKey(),
         };
         await collection.insertOne(newUser);
         return NextResponse.json(

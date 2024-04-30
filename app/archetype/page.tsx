@@ -1,6 +1,4 @@
-import { getServerSession } from "next-auth";
-
-import { authConfig } from "@/app/api/auth/[...nextauth]/config";
+import getUserDetails from "@/app/api/auth";
 import { getArchetypes } from "@/app/api/archetype/fetchers";
 import { getDreamArchetypeCount } from "@/app/api/dream/fetchers";
 import ActionBar from "@/components/ActionBar";
@@ -21,8 +19,7 @@ export default async function Archetypes(): Promise<JSX.Element> {
     const archetypes = await getArchetypes();
 
     let countedArchetypes;
-    const session = await getServerSession(authConfig);
-    const email = session?.user?.email;
+    const { email } = await getUserDetails();
     if (email) {
         const archetypeCountData = await getDreamArchetypeCount(email);
         countedArchetypes = joinArchetypesWithCount(archetypes, archetypeCountData);

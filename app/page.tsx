@@ -1,7 +1,6 @@
-import { getServerSession } from "next-auth";
 import Image from "next/image";
 
-import { authConfig } from "@/app/api/auth/[...nextauth]/config";
+import getUserDetails from "@/app/api/auth/";
 import { getRandomDream } from "@/app/api/dream/fetchers";
 import { getArchetypes } from "@/app/api/archetype/fetchers";
 import { formatDream } from "@/lib/formatters";
@@ -10,16 +9,14 @@ import Menu from "@/components/Menu";
 import LoginMenu from "@/components/LoginMenu";
 
 export default async function Home(): Promise<JSX.Element> {
-    const session = await getServerSession(authConfig);
-    let userEmail = "";
+    const { email, key } = await getUserDetails();
     let dream: Dream | null = null;
     let archetypes: Archetype[] | null = null;
-    if (session?.user?.email) {
-        userEmail = session.user.email;
+    if (email && key) {
         archetypes = await getArchetypes();
-        const rawDream = await getRandomDream(userEmail);
+        const rawDream = await getRandomDream(email);
         if (rawDream) {
-            dream = formatDream(rawDream, archetypes, userEmail);
+            dream = formatDream(rawDream, archetypes, email, key);
         }
     }
 
@@ -37,11 +34,7 @@ export default async function Home(): Promise<JSX.Element> {
             <p className="italic text-white p-2 text-center">
                 &quot;where untold memories are rediscovered...&quot;
             </p>
-            {session ? (
-                <Menu email={userEmail} dream={dream} archetypes={archetypes} />
-            ) : (
-                <LoginMenu />
-            )}
+            {email ? <Menu email={email} dream={dream} archetypes={archetypes} /> : <LoginMenu />}
         </>
     );
 }
