@@ -34,10 +34,12 @@ export async function getRandomDream(email: string): Promise<RawDream | null> {
     return result;
 }
 
-export async function getDreamArchetypeCount(): Promise<Record<string, number>> {
+export async function getDreamArchetypeCount(email: string): Promise<Record<string, number>> {
     const scores: Record<string, number> = {};
     const projection = { archetype: 1 };
-    const cursor = DREAMS_COLLECTION.find().project(projection);
+    const cursor = DREAMS_COLLECTION.find({
+        userEmail: email,
+    }).project(projection);
 
     for await (const curse of cursor) {
         const item = curse as { archetype: string };
