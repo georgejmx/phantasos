@@ -35,7 +35,7 @@
         "typescript": "^5"
     },
     "prettier": {
-        "printWidth": 92,
+        "printWidth": 100,
         "tabWidth": 4,
         "trailingComma": "es5"
     }

@@ -28,9 +28,9 @@ export default function RediscoverDream(props: RediscoverModalProps): JSX.Elemen
                                 aspect={props.dream.aspect}
                             />
                         ) : (
-                            <p className="text-cyan-500 italic p-2 my-4">
-                                You have no dreams to display, record dreams to see a random
-                                memory here
+                            <p className="text-blue-500 italic p-2 my-4">
+                                You have no dreams to display, record dreams to see a random memory
+                                here
                             </p>
                         )}
 

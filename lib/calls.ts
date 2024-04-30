@@ -2,10 +2,7 @@
 
 import { ApiResponse } from "./types";
 
-export async function postDream(
-    dreamtext: string,
-    archetype: string
-): Promise<ApiResponse> {
+export async function postDream(dreamtext: string, archetype: string): Promise<ApiResponse> {
     const response = await fetch("/api/dream", {
         method: "POST",
         headers: {

@@ -6,14 +6,12 @@ export default function Menu(props: MenuProps): JSX.Element {
     return (
         <>
             {props.email && (
-                <p className="text-lime-600 p-2 text-center">
-                    You are signed in as {props.email}
-                </p>
+                <p className="text-lime-600 p-2 text-center">You are signed in as {props.email}</p>
             )}
-            {props.archetypes ? (
+            {props.dream && props.archetypes ? (
                 <NavigationPane dream={props.dream} archetypes={props.archetypes} />
             ) : (
-                <ErrorBox />
+                <ErrorBox message="Error fetching data from server" />
             )}
         </>
     );

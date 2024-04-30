@@ -13,10 +13,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         if (!isValidEmail(body.email)) {
             return NextResponse.json({ message: "Invalid email" }, { status: 400 });
         } else if (!isValidPassword(body.password)) {
-            return NextResponse.json(
-                { message: "Insecure password detected" },
-                { status: 400 }
-            );
+            return NextResponse.json({ message: "Insecure password detected" }, { status: 400 });
         }
         const newUser: User = {
             email: body.email,

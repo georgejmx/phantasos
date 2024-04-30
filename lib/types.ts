@@ -12,6 +12,10 @@ export interface GlobalErrorProps {
     reset: () => void;
 }
 
+export interface ErrorBoxProps {
+    message: string;
+}
+
 export interface MenuProps {
     email: string | null;
     dream: Dream | null;
@@ -90,4 +94,5 @@ export type Archetype = {
     goal: string;
     aspect: Aspect;
     description: string;
+    count?: number;
 };

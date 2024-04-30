@@ -5,6 +5,7 @@ import { ChangeEvent, useState } from "react";
 import { RecordModalProps } from "@/lib/types";
 import { postDream } from "@/lib/calls";
 import SelectArchetypeGrid from "./SelectArchetypeGrid";
+import ErrorBox from "./ErrorBox";
 
 const DREAMTEXT_LIMIT = 1000;
 
@@ -66,9 +67,7 @@ export default function RecordDream(props: RecordModalProps): JSX.Element {
                             onSelect={selectArchetypeHandler}
                         />
 
-                        {errorMsg && (
-                            <p className="text-cyan-500 italic p-2 my-4">{errorMsg}</p>
-                        )}
+                        {errorMsg && <ErrorBox message={errorMsg} />}
 
                         <div>
                             <button
