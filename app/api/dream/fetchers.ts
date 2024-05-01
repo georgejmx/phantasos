@@ -15,7 +15,7 @@ export async function getDreams(email: string): Promise<RawDream[]> {
         userEmail: email,
     });
     for await (const item of cursor) {
-        out.push(item as RawDream);
+        out.push(item);
     }
     await cursor.close();
     return out;

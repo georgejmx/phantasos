@@ -1,4 +1,4 @@
-import { NextAuthOptions } from "next-auth";
+import type { NextAuthOptions } from "next-auth";
 import { compare } from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -13,12 +13,12 @@ export const authConfig: NextAuthOptions = {
                 email: {
                     label: "Email",
                     type: "text",
-                    placeholder: "george@example.com",
+                    placeholder: "hello@example.com",
                 },
                 password: { label: "Password", type: "password" },
             },
             // @ts-ignore Broken next-auth typing
-            async authorize(credentials, _: unknown) {
+            async authorize(credentials, _: unknown): Promise<User> {
                 const client = await clientPromise;
                 const users = client.db(process.env.DB_NAME).collection("users");
                 const user: User = (await users.findOne({

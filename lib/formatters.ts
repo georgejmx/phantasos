@@ -5,7 +5,8 @@ import { Archetype, Dream, RawDream } from "./types";
 export function formatDream(
     rawDream: RawDream,
     archetypes: Archetype[],
-    email?: string | null
+    email?: string,
+    key?: string
 ): Dream {
     const dreamArchetype = archetypes.find((a) => a.name == rawDream.archetype);
     if (!dreamArchetype) {
@@ -14,7 +15,7 @@ export function formatDream(
     return {
         id: rawDream._id!!.toString(),
         userEmail: rawDream.userEmail,
-        dreamtext: decryptText(rawDream.text, email),
+        dreamtext: decryptText(rawDream.text, email, key),
         archetype: rawDream.archetype,
         date: parseDate(rawDream.date),
         goal: dreamArchetype.goal,
