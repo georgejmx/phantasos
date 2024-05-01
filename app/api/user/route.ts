@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { hash } from "bcrypt";
 
-import clientPromise from "@/lib/setupMongo";
-import { User } from "@/lib/types";
-import { isValidEmail, isValidPassword } from "@/lib/utils";
-import { generateUserKey } from "@/lib/security";
+import clientPromise from "../../../lib/setupMongo";
+import { User } from "../../../lib/types";
+import { isValidEmail, isValidPassword } from "../../../lib/utils";
+import { generateUserKey } from "../../../lib/security";
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
     try {

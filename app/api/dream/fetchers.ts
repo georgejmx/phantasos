@@ -1,5 +1,5 @@
-import clientPromise from "@/lib/setupMongo";
-import { RawDream } from "@/lib/types";
+import clientPromise from "../../../lib/setupMongo";
+import { RawDream } from "../../../lib/types";
 import type { Collection } from "mongodb";
 
 async function getDreamsCollection(): Promise<Collection<RawDream>> {

@@ -1,4 +1,4 @@
-import { TextInputProps } from "@/lib/types";
+import { TextInputProps } from "../lib/types";
 
 export default function TextInput(props: TextInputProps): JSX.Element {
     return (

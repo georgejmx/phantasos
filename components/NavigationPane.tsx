@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { NavigationPaneProps } from "@/lib/types";
+import { NavigationPaneProps } from "../lib/types";
 import RecordDream from "./RecordDream";
 import RediscoverDream from "./RediscoverDream";
 

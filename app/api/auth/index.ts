@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth/next";
 
 import { authConfig } from "./[...nextauth]/config";
-import clientPromise from "@/lib/setupMongo";
-import { User } from "@/lib/types";
+import clientPromise from "../../../lib/setupMongo";
+import { User } from "../../../lib/types";
 
 type UserDetailsResponse = {
     email?: string;

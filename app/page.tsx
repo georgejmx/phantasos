@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-import getUserDetails from "@/app/api/auth/";
-import { getRandomDream } from "@/app/api/dream/fetchers";
-import { getArchetypes } from "@/app/api/archetype/fetchers";
-import { formatDream } from "@/lib/formatters";
-import { Dream, Archetype } from "@/lib/types";
-import Menu from "@/components/Menu";
-import LoginMenu from "@/components/LoginMenu";
+import getUserDetails from "./api/auth";
+import { getRandomDream } from "./api/dream/fetchers";
+import { getArchetypes } from "./api/archetype/fetchers";
+import { formatDream } from "../lib/formatters";
+import { Dream, Archetype } from "../lib/types";
+import Menu from "../components/Menu";
+import LoginMenu from "../components/LoginMenu";
 
 export default async function Home(): Promise<JSX.Element> {
     const { email, key } = await getUserDetails();

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 
-import { createUser } from "@/lib/calls";
+import { createUser } from "../lib/calls";
 import TextInput from "./TextInput";
 import ErrorBox from "./ErrorBox";
 

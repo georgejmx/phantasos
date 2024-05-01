@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { RediscoverModalProps } from "@/lib/types";
+import { RediscoverModalProps } from "../lib/types";
 import Dream from "./Dream";
 
 export default function RediscoverDream(props: RediscoverModalProps): JSX.Element {

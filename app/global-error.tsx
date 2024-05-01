@@ -1,6 +1,6 @@
 "use client";
 
-import { GlobalErrorProps } from "@/lib/types";
+import { GlobalErrorProps } from "../lib/types";
 
 export default function GlobalError(props: GlobalErrorProps) {
     return (
