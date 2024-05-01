@@ -18,8 +18,6 @@ export function decryptText(hiddentext: string, email?: string | null, key?: str
     if (!email || !key) {
         throw Error("Unable to validate your credentials");
     }
-    console.log(email);
-    console.log(key);
     const iv = crypto.enc.Hex.parse(generateIv(email));
     return crypto.AES.decrypt(hiddentext, key, { iv }).toString(crypto.enc.Utf8);
 }

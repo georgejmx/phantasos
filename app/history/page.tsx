@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 import getUserDetails from "@/app/api/auth/";
 import { getDreams } from "@/app/api/dream/fetchers";
 import { getArchetypes } from "@/app/api/archetype/fetchers";
@@ -11,12 +13,13 @@ export default async function History(): Promise<JSX.Element> {
     const { email, key } = await getUserDetails();
     let dreams: DreamType[] = [];
     if (email && key) {
+        const archetypes = await getArchetypes();
+        const rawDreams = await getDreams(email);
         try {
-            const archetypes = await getArchetypes();
-            const rawDreams = await getDreams(email);
             dreams = rawDreams.map((rawDream) => formatDream(rawDream, archetypes, email, key));
         } catch {
             dreams = [];
+            redirect("/");
         }
     }
 

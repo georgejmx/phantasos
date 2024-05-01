@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 import getUserDetails from "@/app/api/auth/";
 import { getRandomDream } from "@/app/api/dream/fetchers";
@@ -16,7 +17,12 @@ export default async function Home(): Promise<JSX.Element> {
         archetypes = await getArchetypes();
         const rawDream = await getRandomDream(email);
         if (rawDream) {
-            dream = formatDream(rawDream, archetypes, email, key);
+            try {
+                dream = formatDream(rawDream, archetypes, email, key);
+            } catch {
+                dream = null;
+                redirect("/");
+            }
         }
     }
 
