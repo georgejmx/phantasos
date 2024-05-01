@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import getUserDetails from "../auth/";
+import getUserDetails from "../auth";
 import clientPromise from "../../../lib/setupMongo";
 import { CoreDream, RawDream } from "../../../lib/types";
 import { encryptText } from "../../../lib/security";

@@ -18,3 +18,12 @@ export function getRandomDream(email: string): RawDream {
     }
     throw new Error("Unexpected email");
 }
+
+export function getDreamArchetypeCount(email: string): Record<string, number> {
+    if (email === "tester@gmail.com") {
+        return {
+            innocent: 1,
+        };
+    }
+    throw new Error("Unexpected email");
+}

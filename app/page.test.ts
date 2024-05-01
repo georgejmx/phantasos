@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 
 import Home from "./page";
 
-vi.mock("./api/auth/");
+vi.mock("./api/auth");
 vi.mock("./api/dream/fetchers");
 vi.mock("./api/archetype/fetchers");
 

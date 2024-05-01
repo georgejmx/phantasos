@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import getUserDetails from "../api/auth/";
+import getUserDetails from "../api/auth";
 import { getDreams } from "../api/dream/fetchers";
 import { getArchetypes } from "../api/archetype/fetchers";
 import { formatDream } from "../../lib/formatters";
