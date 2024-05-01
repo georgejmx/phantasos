@@ -3,7 +3,7 @@ import { encryptText } from "../../../../lib/security";
 import { RawDream } from "../../../../lib/types";
 
 function generateDreamText(email: string) {
-    return encryptText("a random dream", email, "arandomkeyoflength32222222222222");
+    return encryptText("a random mock dream", email, "arandomkeyoflength32222222222222");
 }
 
 export function getRandomDream(email: string): RawDream {
