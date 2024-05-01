@@ -11,7 +11,8 @@ export function encryptText(dreamtext: string, email?: string | null, key?: stri
         throw Error("Unable to validate your credentials");
     }
     const iv = crypto.enc.Hex.parse(generateIv(email));
-    return crypto.AES.encrypt(dreamtext, key, { iv }).toString();
+    const parsedKey = crypto.enc.Hex.parse(key);
+    return crypto.AES.encrypt(dreamtext, parsedKey, { iv }).toString();
 }
 
 export function decryptText(hiddentext: string, email?: string | null, key?: string): string {
@@ -19,5 +20,6 @@ export function decryptText(hiddentext: string, email?: string | null, key?: str
         throw Error("Unable to validate your credentials");
     }
     const iv = crypto.enc.Hex.parse(generateIv(email));
-    return crypto.AES.decrypt(hiddentext, key, { iv }).toString(crypto.enc.Utf8);
+    const parsedKey = crypto.enc.Hex.parse(key);
+    return crypto.AES.decrypt(hiddentext, parsedKey, { iv }).toString(crypto.enc.Utf8);
 }
