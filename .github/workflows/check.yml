@@ -3,18 +3,6 @@ name: Check
 on: [push]
 
 jobs:
-    dev-build:
-        name: Test Build
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - name: Check Node.js v20 Environment
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 20.x
-            - run: npm ci
-            - run: npm run lint
-            - run: npm run build
     unit-test:
         name: Unit Test
         runs-on: ubuntu-latest

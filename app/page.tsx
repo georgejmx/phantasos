@@ -19,7 +19,7 @@ export default async function Home(): Promise<JSX.Element> {
         if (rawDream) {
             try {
                 dream = formatDream(rawDream, archetypes, email, key);
-            } catch (error) {
+            } catch {
                 dream = null;
                 redirect("/");
             }
