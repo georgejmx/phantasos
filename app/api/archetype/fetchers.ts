@@ -1,5 +1,5 @@
-import clientPromise from "@/lib/setupMongo";
-import { Archetype } from "@/lib/types";
+import clientPromise from "../../../lib/setupMongo";
+import { Archetype } from "../../../lib/types";
 
 export async function getArchetypes(): Promise<Archetype[]> {
     const client = await clientPromise;

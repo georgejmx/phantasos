@@ -1,9 +1,9 @@
-import getUserDetails from "@/app/api/auth";
-import { getArchetypes } from "@/app/api/archetype/fetchers";
-import { getDreamArchetypeCount } from "@/app/api/dream/fetchers";
-import ActionBar from "@/components/ActionBar";
-import Archetype from "@/components/Archetype";
-import { Archetype as ArchetypeType } from "@/lib/types";
+import getUserDetails from "../api/auth";
+import { getArchetypes } from "../api/archetype/fetchers";
+import { getDreamArchetypeCount } from "../api/dream/fetchers";
+import ActionBar from "../../components/ActionBar";
+import Archetype from "../../components/Archetype";
+import { Archetype as ArchetypeType } from "../../lib/types";
 
 function joinArchetypesWithCount(
     archetypes: ArchetypeType[],

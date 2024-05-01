@@ -2,8 +2,8 @@ import type { NextAuthOptions } from "next-auth";
 import { compare } from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import clientPromise from "@/lib/setupMongo";
-import { User } from "@/lib/types";
+import clientPromise from "../../../../lib/setupMongo";
+import { User } from "../../../../lib/types";
 
 export const authConfig: NextAuthOptions = {
     providers: [

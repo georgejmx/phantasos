@@ -2,8 +2,8 @@
 
 import { ChangeEvent, useState } from "react";
 
-import { RecordModalProps } from "@/lib/types";
-import { postDream } from "@/lib/calls";
+import { RecordModalProps } from "../lib/types";
+import { postDream } from "../lib/calls";
 import SelectArchetypeGrid from "./SelectArchetypeGrid";
 import ErrorBox from "./ErrorBox";
 

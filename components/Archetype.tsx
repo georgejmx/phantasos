@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { aspectColourStyleMap, getCorrectThumbnail, toDefiniteArticle } from "@/lib/utils";
-import type { Archetype as ArchetypeType } from "@/lib/types";
+import { aspectColourStyleMap, getCorrectThumbnail, toDefiniteArticle } from "../lib/utils";
+import type { Archetype as ArchetypeType } from "../lib/types";
 
 export default function Archetype(props: ArchetypeType & { showCounts: boolean }): JSX.Element {
     return (

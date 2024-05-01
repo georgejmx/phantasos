@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { aspectColourStyleMap, getCorrectThumbnail } from "@/lib/utils";
-import type { DreamProps } from "@/lib/types";
+import { aspectColourStyleMap, getCorrectThumbnail } from "../lib/utils";
+import type { DreamProps } from "../lib/types";
 
 export default function Dream(props: DreamProps): JSX.Element {
     return (

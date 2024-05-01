@@ -1,4 +1,4 @@
-import type { ErrorBoxProps } from "@/lib/types";
+import type { ErrorBoxProps } from "../lib/types";
 
 export default function ErrorBox(props: ErrorBoxProps): JSX.Element {
     return (

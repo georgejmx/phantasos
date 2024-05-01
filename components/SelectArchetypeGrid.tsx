@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { SelectArchetypeGridProps, Archetype } from "@/lib/types";
+import { SelectArchetypeGridProps, Archetype } from "../lib/types";
 
 export default function SelectArchetypeGrid(props: SelectArchetypeGridProps): JSX.Element {
     const router = useRouter();

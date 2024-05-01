@@ -1,13 +1,13 @@
 import { redirect } from "next/navigation";
 
-import getUserDetails from "@/app/api/auth/";
-import { getDreams } from "@/app/api/dream/fetchers";
-import { getArchetypes } from "@/app/api/archetype/fetchers";
-import { formatDream } from "@/lib/formatters";
-import { Dream as DreamType } from "@/lib/types";
-import ActionBar from "@/components/ActionBar";
-import Dream from "@/components/Dream";
-import ErrorBox from "@/components/ErrorBox";
+import getUserDetails from "../api/auth/";
+import { getDreams } from "../api/dream/fetchers";
+import { getArchetypes } from "../api/archetype/fetchers";
+import { formatDream } from "../../lib/formatters";
+import { Dream as DreamType } from "../../lib/types";
+import ActionBar from "../../components/ActionBar";
+import Dream from "../../components/Dream";
+import ErrorBox from "../../components/ErrorBox";
 
 export default async function History(): Promise<JSX.Element> {
     const { email, key } = await getUserDetails();
