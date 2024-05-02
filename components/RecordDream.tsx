@@ -25,6 +25,10 @@ export default function RecordDream(props: RecordModalProps): JSX.Element {
             setErrorMsg("Please select an archetype to mark your dream...");
             return;
         }
+        if (!dreamtext) {
+            setErrorMsg("Please enter text to record a dream...");
+            return;
+        }
 
         postDream(dreamtext, selectedArchetype)
             .then((response) => {

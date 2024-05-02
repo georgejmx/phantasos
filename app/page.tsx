@@ -8,6 +8,7 @@ import { formatDream } from "../lib/formatters";
 import { Dream, Archetype } from "../lib/types";
 import Menu from "../components/Menu";
 import LoginMenu from "../components/LoginMenu";
+import ExitPopup from "../components/ExitPopup";
 
 export default async function Home(): Promise<JSX.Element> {
     const { email, key } = await getUserDetails();
@@ -28,6 +29,7 @@ export default async function Home(): Promise<JSX.Element> {
 
     return (
         <>
+            {email && <ExitPopup />}
             <Image
                 src="/whale.png"
                 alt="Floating whale in purple blackground"

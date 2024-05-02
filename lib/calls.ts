@@ -13,7 +13,7 @@ export async function postDream(dreamtext: string, archetype: string): Promise<A
     if (response.status === 201) {
         const responseBody = await response.json();
         return { ok: true, message: responseBody.message };
-    } else if (response.status === 400 || 500) {
+    } else if (response.status === 400 || 403) {
         const responseBody = await response.json();
         return { ok: false, message: responseBody.message };
     } else {
@@ -32,7 +32,7 @@ export async function createUser(email: string, password: string): Promise<ApiRe
     if (response.status === 201) {
         const responseBody = await response.json();
         return { ok: true, message: responseBody.message };
-    } else if (response.status === 400 || 500) {
+    } else if (response.status === 400 || 403) {
         const responseBody = await response.json();
         return { ok: false, message: responseBody.message };
     } else {
