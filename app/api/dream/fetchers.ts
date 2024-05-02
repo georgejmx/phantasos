@@ -7,7 +7,7 @@ async function getDreamsCollection(): Promise<Collection<RawDream>> {
     return client.db(process.env.DB_NAME).collection("dreams");
 }
 
-const DREAMS_COLLECTION = await getDreamsCollection();
+export const DREAMS_COLLECTION = await getDreamsCollection();
 
 export async function getDreams(email: string): Promise<RawDream[]> {
     const out = [];

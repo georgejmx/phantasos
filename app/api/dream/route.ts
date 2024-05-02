@@ -1,15 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
 
+import { DREAMS_COLLECTION } from "./fetchers";
 import getUserDetails from "../auth";
-import clientPromise from "../../../lib/setupMongo";
 import { CoreDream, RawDream } from "../../../lib/types";
 import { encryptText } from "../../../lib/security";
 
+const SECRET = process.env.NEXTAUTH_SECRET;
+
 export async function POST(request: NextRequest): Promise<NextResponse> {
     try {
+        const token = await getToken({ req: request, secret: SECRET });
+        if (!token) {
+            return NextResponse.json({ message: "Unable to provide this data" }, { status: 403 });
+        }
         const { email, key } = await getUserDetails();
-        const client = await clientPromise;
-        const collection = client.db(process.env.DB_NAME).collection("dreams");
         const body: CoreDream = await request.json();
         const newDream: RawDream = {
             text: encryptText(body.dreamtext, email, key),
@@ -17,7 +22,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             date: new Date(),
             userEmail: email!,
         };
-        await collection.insertOne(newDream);
+        await DREAMS_COLLECTION.insertOne(newDream);
         return NextResponse.json({ message: "Dream successfully logged" }, { status: 201 });
     } catch (error: unknown) {
         return NextResponse.json({ message: String(error) }, { status: 500 });
