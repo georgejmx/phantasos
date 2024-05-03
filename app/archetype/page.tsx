@@ -3,17 +3,7 @@ import { getArchetypes } from "../api/archetype/fetchers";
 import { getDreamArchetypeCount } from "../api/dream/fetchers";
 import ActionBar from "../../components/ActionBar";
 import Archetype from "../../components/Archetype";
-import { Archetype as ArchetypeType } from "../../lib/types";
-
-function joinArchetypesWithCount(
-    archetypes: ArchetypeType[],
-    counts: Record<string, number>
-): ArchetypeType[] {
-    for (let archetype of archetypes) {
-        archetype.count = counts[archetype.name];
-    }
-    return archetypes;
-}
+import { joinArchetypesWithCount } from "../../lib/formatters";
 
 export default async function Archetypes(): Promise<JSX.Element> {
     const archetypes = await getArchetypes();

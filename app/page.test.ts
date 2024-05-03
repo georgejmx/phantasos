@@ -1,5 +1,4 @@
-import { expect, test, vi, describe } from "vitest";
-import { afterEach, beforeEach } from "node:test"; // for some reason only the node ones work
+import { expect, test, vi, describe, afterAll } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
@@ -10,12 +9,9 @@ vi.mock("./api/dream/fetchers");
 vi.mock("./api/archetype/fetchers");
 
 describe("Home Page", () => {
-    beforeEach(() => {
-        expect(screen.getByText('"where untold memories are rediscovered..."')).toBeDefined();
-    });
-
-    test("Navigates to the rediscover dream modal with the right data", async () => {
+    test("Navigates to the rediscover dream modal with a random dream displayed", async () => {
         render(await Home());
+        expect(screen.getByText('"where untold memories are rediscovered..."')).toBeDefined();
         await userEvent.click(screen.getByText("Rediscover Dream"));
 
         expect(screen.getByText("An illusion from the past..")).toBeDefined();
@@ -36,8 +32,8 @@ describe("Home Page", () => {
         expect(screen.getByText(/Please select an archetype to mark your dream.../)).toBeDefined();
     });
 
-    afterEach(async () => {
+    afterAll(async () => {
         await userEvent.click(screen.getByText("Go back"));
-        expect(screen.getByText('"where untold memories are rediscovered..."')).toBeDefined();
+        expect(screen.queryAllByText("Phantasos")).toHaveLength(2);
     });
 });

@@ -1,10 +1,10 @@
 import { decryptText } from "./security";
 import { parseDate } from "./utils";
-import { Archetype, Dream, RawDream } from "./types";
+import { Archetype as ArchetypeType, Dream, RawDream } from "./types";
 
 export function formatDream(
     rawDream: RawDream,
-    archetypes: Archetype[],
+    archetypes: ArchetypeType[],
     email?: string,
     key?: string
 ): Dream {
@@ -21,4 +21,14 @@ export function formatDream(
         goal: dreamArchetype.goal,
         aspect: dreamArchetype.aspect,
     };
+}
+
+export function joinArchetypesWithCount(
+    archetypes: ArchetypeType[],
+    counts: Record<string, number>
+): ArchetypeType[] {
+    for (let archetype of archetypes) {
+        archetype.count = counts[archetype.name];
+    }
+    return archetypes;
 }
