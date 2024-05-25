@@ -36,7 +36,11 @@ export default function SelectArchetypeGrid(props: SelectArchetypeGridProps): JS
                     <button
                         key={archetype.name}
                         onClick={() => setSelectedArchetype(archetype.name)}
-                        className="py-2 px-6 mr-2 mb-2 bg-slate-900 font-montserrat rounded-full text-pink-400 focus:outline active:bg-purple-500 active:border-fuchsia-400"
+                        className={`py-2 px-6 mr-2 mb-2 font-montserrat rounded-full text-pink-400 bg-slate-900 ${
+                            archetype.name === selectedArchetype
+                                ? "border-fuchsia-400 border-4"
+                                : ""
+                        }`}
                     >
                         {archetype.name}
                     </button>
