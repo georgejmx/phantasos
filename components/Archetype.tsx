@@ -12,8 +12,8 @@ export default function Archetype(props: ArchetypeType & { showCounts: boolean }
                         {toDefiniteArticle(props.name)}
                     </h2>
                     {props.showCounts && props.count && (
-                        <button className="inline bg-blue-800 text-white h-8 text-sm rounded-lg px-2 mx-2 -my-0.5">
-                            {props.count} {props.count > 1 ? "dreams" : "dream"}
+                        <button className="block bg-blue-800 text-white h-8 text-xs rounded-lg px-2 mx-2 -my-0.5 md:text-sm">
+                            <strong>{props.count}</strong> {props.count > 1 ? "dreams" : "dream"}
                         </button>
                     )}
                 </div>
