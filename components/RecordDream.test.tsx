@@ -43,6 +43,4 @@ describe("Record Dream Modal", () => {
 
         expect(screen.getByText("Unable to provide this data")).toBeDefined();
     });
-
-    test.todo("change the mock to also test success case");
 });

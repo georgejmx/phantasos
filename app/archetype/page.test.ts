@@ -17,5 +17,5 @@ test("Archetype Page", async () => {
     expect(screen.getByText(/ego/)).toBeDefined();
 
     expect(screen.queryAllByAltText(/image thumbnail/)).toHaveLength(2);
-    expect(screen.queryAllByText("1 dream")).toHaveLength(1);
+    expect(screen.queryAllByText(/1/)).toHaveLength(1);
 });

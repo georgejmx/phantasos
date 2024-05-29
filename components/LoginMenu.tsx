@@ -11,10 +11,13 @@ import ErrorBox from "./ErrorBox";
 export default function LoginMenu(): JSX.Element {
     const router = useRouter();
 
-    const [isSignup, setIsSignup] = useState<boolean>(false);
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [errorMsg, setErrorMsg] = useState<string>("");
+    const [isSignup, setIsSignup] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [prompt, setPrompt] = useState(
+        "Upon registration, you will be redirected to the sign in page"
+    );
+    const [errorMsg, setErrorMsg] = useState("");
 
     const emailUpdateHandler = (value: string) => setEmail(value);
     const passwordUpdateHandler = (value: string) => setPassword(value);
@@ -28,6 +31,7 @@ export default function LoginMenu(): JSX.Element {
         createUser(email, password)
             .then((response) => {
                 if (response.ok) {
+                    setPrompt("Redirecting...");
                     router.push("/api/auth/signin");
                 } else {
                     setErrorMsg(response.message);
@@ -75,9 +79,7 @@ export default function LoginMenu(): JSX.Element {
                     >
                         Register
                     </button>
-                    <p className="text-purple-300 p-2 text-center italic">
-                        Upon registration, you will be redirected to the sign in page
-                    </p>
+                    <p className="text-purple-300 p-2 text-center italic">{prompt}</p>
                     {errorMsg && <ErrorBox message={errorMsg} />}
                 </div>
             )}
