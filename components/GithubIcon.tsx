@@ -1,7 +1,7 @@
 export default function GithubIcon() {
     return (
         <a
-            className="font-serif fixed bottom-2 left-2 xl:bottom-7 xl:left-7 rounded border-purple-500 text-purple-500 font-bold py-1 px-2 bg-zinc-900 mb-4 mx-8 z-1 opacity-75 z-100 text-lg"
+            className="fixed bottom-2 left-2 py-1 px-2 mb-4 mx-8 z-1 z-100 fill-white"
             href="https://github.com/georgejmx/phantasos"
         >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
