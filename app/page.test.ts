@@ -35,5 +35,6 @@ describe("Home Page", () => {
     afterAll(async () => {
         await userEvent.click(screen.getByText("Go back"));
         expect(screen.queryAllByText("Phantasos")).toHaveLength(2);
+        expect(screen.queryAllByText("Sign out")).toHaveLength(2);
     });
 });
