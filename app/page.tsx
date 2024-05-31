@@ -9,6 +9,7 @@ import { Dream, Archetype } from "../lib/types";
 import Menu from "../components/Menu";
 import LoginMenu from "../components/LoginMenu";
 import ExitPopup from "../components/ExitPopup";
+import GithubIcon from "../components/GithubIcon";
 
 export default async function Home(): Promise<JSX.Element> {
     const { email, key } = await getUserDetails();
@@ -29,6 +30,7 @@ export default async function Home(): Promise<JSX.Element> {
 
     return (
         <>
+            <GithubIcon />
             {email && <ExitPopup />}
             <Image
                 src="/whale.png"
