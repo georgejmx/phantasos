@@ -2,17 +2,20 @@
 
 import { ChangeEvent, useState } from "react";
 
-import { RecordModalProps } from "../lib/types";
+import type { RecordModalProps } from "../lib/types";
 import { postDream } from "../lib/calls";
 import SelectArchetypeGrid from "./SelectArchetypeGrid";
 import ErrorBox from "./ErrorBox";
 
 const DREAMTEXT_LIMIT = 1000;
+const BUTTON_DEFAULT_TEXT = "Record";
 
 export default function RecordDream(props: RecordModalProps): JSX.Element {
-    const [selectedArchetype, setSelectedArchetype] = useState<string>("");
-    const [dreamtext, setDreamtext] = useState<string>("");
-    const [errorMsg, setErrorMsg] = useState<string>("");
+    const [selectedArchetype, setSelectedArchetype] = useState("");
+    const [dreamtext, setDreamtext] = useState("");
+    const [buttonText, setButtonText] = useState(BUTTON_DEFAULT_TEXT);
+    const [isButtonEnabled, setIsButtonEnabled] = useState(true);
+    const [errorMsg, setErrorMsg] = useState("");
 
     const textHandler = (event: ChangeEvent<HTMLTextAreaElement>) =>
         setDreamtext(event.target.value);
@@ -30,16 +33,21 @@ export default function RecordDream(props: RecordModalProps): JSX.Element {
             return;
         }
 
+        setIsButtonEnabled(false);
+        setButtonText("Recording...");
         postDream(dreamtext, selectedArchetype)
             .then((response) => {
                 if (response.ok) {
                     props.onConfirm();
                 } else {
+                    setIsButtonEnabled(true);
+                    setButtonText(BUTTON_DEFAULT_TEXT);
                     setErrorMsg(response.message);
                 }
             })
-            .catch((error: unknown) => {
-                console.error(error);
+            .catch((_: unknown) => {
+                setIsButtonEnabled(true);
+                setButtonText(BUTTON_DEFAULT_TEXT);
                 setErrorMsg("Client error when posting dream");
             });
     }
@@ -82,9 +90,10 @@ export default function RecordDream(props: RecordModalProps): JSX.Element {
                             </button>
                             <button
                                 className="rounded border-2 border-purple-500 p-2 text-purple-500 bg-black"
+                                disabled={!isButtonEnabled}
                                 onClick={confirmHandler}
                             >
-                                Record
+                                {buttonText}
                             </button>
                         </div>
                     </div>
