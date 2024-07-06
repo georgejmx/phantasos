@@ -4,6 +4,7 @@ import { assert, expect, test, vi, describe, beforeAll } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
+import { signIn } from "next-auth/react";
 
 import LoginMenu from "./LoginMenu";
 
@@ -17,9 +18,11 @@ describe("Login Menu", () => {
     });
 
     test("Successfully handles a user signup", async () => {
+        const mockSignIn = vi.mocked(signIn);
+
         await userEvent.click(screen.getByText("Sign up"));
         expect(
-            screen.getByText("Upon registration, you will be redirected to the sign in page")
+            screen.getByText("Upon registration, you will be redirected to the home page")
         ).toBeDefined();
 
         const emailInput = document.getElementById("email-input");
@@ -35,5 +38,6 @@ describe("Login Menu", () => {
         expect(screen.queryByText("Please enter an email and password")).toEqual(null);
         expect(screen.queryByText("Client error when creating user")).toEqual(null);
         expect(screen.getByText("Redirecting...")).toBeDefined();
+        expect(mockSignIn).toHaveBeenCalledTimes(1);
     });
 });

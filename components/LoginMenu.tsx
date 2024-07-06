@@ -15,7 +15,7 @@ export default function LoginMenu(): JSX.Element {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [prompt, setPrompt] = useState(
-        "Upon registration, you will be redirected to the sign in page"
+        "Upon registration, you will be redirected to the home page"
     );
     const [errorMsg, setErrorMsg] = useState("");
 
@@ -32,7 +32,7 @@ export default function LoginMenu(): JSX.Element {
             .then((response) => {
                 if (response.ok) {
                     setPrompt("Redirecting...");
-                    router.push("/api/auth/signin");
+                    signIn("credentials", { email, password });
                 } else {
                     setErrorMsg(response.message);
                 }
@@ -79,7 +79,7 @@ export default function LoginMenu(): JSX.Element {
                     >
                         Register
                     </button>
-                    <p className="text-purple-300 p-2 text-center italic">{prompt}</p>
+                    <p className="text-purple-300 p-2 text-center">{prompt}</p>
                     {errorMsg && <ErrorBox message={errorMsg} />}
                 </div>
             )}
