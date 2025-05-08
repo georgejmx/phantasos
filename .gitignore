@@ -9,6 +9,7 @@
 .DS_Store
 *.pem
 npm-debug.log*
+.zed
 
 .env*
 .vercel
