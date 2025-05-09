@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 
-import { DREAMS_COLLECTION } from "./fetchers";
+import { dreamsCollection } from "./fetchers";
 import getUserDetails from "../auth";
 import { CoreDream, RawDream } from "../../../lib/types";
 import { encryptText } from "../../../lib/security";
@@ -22,7 +22,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             date: new Date(),
             userEmail: email!,
         };
-        await DREAMS_COLLECTION.insertOne(newDream);
+        await dreamsCollection.insertOne(newDream);
         return NextResponse.json({ message: "Dream successfully logged" }, { status: 201 });
     } catch (error: unknown) {
         return NextResponse.json({ message: String(error) }, { status: 500 });
