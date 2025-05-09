@@ -11,7 +11,9 @@ vi.mock("./api/archetype/fetchers");
 describe("Home Page", () => {
     test("Navigates to the rediscover dream modal with a random dream displayed", async () => {
         render(await Home());
+
         expect(screen.getByText('"where untold memories are rediscovered..."')).toBeDefined();
+        expect(screen.getByText("The Innocent")).toBeDefined();
         await userEvent.click(screen.getByText("Rediscover Dream"));
 
         expect(screen.getByText("An illusion from the past..")).toBeDefined();

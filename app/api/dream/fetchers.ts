@@ -7,13 +7,18 @@ async function getDreamsCollection(): Promise<Collection<RawDream>> {
     return client.db(process.env.DB_NAME).collection("dreams");
 }
 
-export const DREAMS_COLLECTION = await getDreamsCollection();
+export const dreamsCollection = await getDreamsCollection();
 
-export async function getDreams(email: string): Promise<RawDream[]> {
+export async function getDreams(email: string, limit: number | null = null): Promise<RawDream[]> {
     const out = [];
-    const cursor = DREAMS_COLLECTION.find({
-        userEmail: email,
-    });
+
+    let cursor;
+    if (limit) {
+        cursor = dreamsCollection.find({ userEmail: email }).sort({ _id: -1 }).limit(limit);
+    } else {
+        cursor = dreamsCollection.find({ userEmail: email }).sort({ _id: -1 });
+    }
+
     for await (const item of cursor) {
         out.push(item);
     }
@@ -22,7 +27,7 @@ export async function getDreams(email: string): Promise<RawDream[]> {
 }
 
 export async function getRandomDream(email: string): Promise<RawDream | null> {
-    const cursor = DREAMS_COLLECTION.aggregate([
+    const cursor = dreamsCollection.aggregate([
         { $match: { userEmail: { $eq: email } } },
         { $sample: { size: 1 } },
     ]);
@@ -37,9 +42,7 @@ export async function getRandomDream(email: string): Promise<RawDream | null> {
 export async function getDreamArchetypeCount(email: string): Promise<Record<string, number>> {
     const scores: Record<string, number> = {};
     const projection = { archetype: 1 };
-    const cursor = DREAMS_COLLECTION.find({
-        userEmail: email,
-    }).project(projection);
+    const cursor = dreamsCollection.find({ userEmail: email }).project(projection);
 
     for await (const curse of cursor) {
         const item = curse as { archetype: string };

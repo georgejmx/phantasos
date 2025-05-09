@@ -1,4 +1,4 @@
-import type { Aspect } from "./types";
+import type { Aspect, RawDream } from "./types";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
@@ -37,4 +37,21 @@ export function reverseString(str: string): string {
         newString += str[i];
     }
     return newString;
+}
+
+export function parseCurrentArchetype(latestDreams: { archetype: string }[]): string | null {
+    const counts: Record<string, number> = {};
+    let maxCount = 0;
+    let currentMax = null;
+
+    for (const dream of latestDreams) {
+        counts[dream.archetype] = (counts[dream.archetype] || 0) + 1;
+
+        if (counts[dream.archetype] > maxCount) {
+            maxCount = counts[dream.archetype];
+            currentMax = dream.archetype;
+        }
+    }
+
+    return currentMax ? toDefiniteArticle(currentMax) : null;
 }
